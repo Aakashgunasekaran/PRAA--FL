@@ -1,0 +1,13 @@
+torch>=2.2.0
+torchvision
+flwr
+medmnist
+numpy
+pandas
+scikit-learn
+matplotlib
+opencv-python
+tqdm
+Pillow
+jupyter
+ipykernel
