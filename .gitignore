@@ -6,6 +6,6 @@ __pycache__/
 *.pyd
 
 results/
-datasets/
+
 
 .vscode/settings.json
