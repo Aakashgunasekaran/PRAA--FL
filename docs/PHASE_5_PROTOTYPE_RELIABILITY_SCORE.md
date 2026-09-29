@@ -41,6 +41,15 @@ The default weights are one-third each and are configurable through
 `federated.prs.PRSConfig`. This is a PRAA-FL experimental formulation, not a
 claim about the FLAME paper.
 
+## Execution efficiency
+
+The Phase 5 runner loads each client prototype and temporal snapshot once and
+builds the class-reference prototypes once per run. Validation embeddings are
+also reused across clients that use the same global fallback model state;
+each client's own prototypes are still used to generate its predictions.
+These caches do not change the metric definitions or their inputs. The runner
+prints concise artifact-load, metric, and output timings with artifact counts.
+
 ## Outputs
 
 `results/phase5/prs.json` stores client ID, class ID, all component values,

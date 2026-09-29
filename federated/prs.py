@@ -62,23 +62,60 @@ def validation_scores(
     device: str = "cpu",
 ) -> Dict[int, Optional[float]]:
     """Compute class-wise accuracy using the client's learned prototypes."""
+    embeddings, labels = validation_embeddings(model, validation_loader, device)
+    return validation_scores_from_embeddings(
+        embeddings, labels, classes, prototypes, device=device
+    )
+
+
+def validation_embeddings(
+    model: torch.nn.Module,
+    validation_loader: Iterable,
+    device: str = "cpu",
+) -> tuple[list[torch.Tensor], list[torch.Tensor]]:
+    """Compute validation embeddings once for reuse with multiple prototypes."""
+    embedding_batches = []
+    label_batches = []
+    model.eval()
+    with torch.no_grad():
+        for images, labels in validation_loader:
+            images = images.to(device)
+            batch_labels = labels.view(-1).to(device)
+            _, embeddings = model(images)
+            if embeddings.ndim != 2:
+                raise ValueError("Validation embeddings must be a two-dimensional tensor")
+            if not torch.isfinite(embeddings).all():
+                raise FloatingPointError("Validation embeddings contain NaN or Inf")
+            embedding_batches.append(embeddings.detach())
+            label_batches.append(batch_labels)
+    return embedding_batches, label_batches
+
+
+def validation_scores_from_embeddings(
+    embedding_batches: Sequence[torch.Tensor],
+    label_batches: Sequence[torch.Tensor],
+    classes: Sequence[int],
+    prototypes: Mapping[int, torch.Tensor],
+    device: str = "cpu",
+) -> Dict[int, Optional[float]]:
+    """Compute class-wise accuracy from cached embeddings and client prototypes."""
     expected = {int(class_id) for class_id in classes}
     if not expected:
         return {}
     if set(prototypes) != expected:
         raise ValueError("Validation classes and prototype classes must match")
+    if len(embedding_batches) != len(label_batches):
+        raise ValueError("Validation embedding and label batches must align")
     prototype_ids = sorted(expected)
     prototype_matrix = torch.stack(
         [_finite_vector(prototypes[class_id], f"class {class_id} prototype") for class_id in prototype_ids]
     ).to(device)
     correct = {class_id: 0 for class_id in expected}
     counts = {class_id: 0 for class_id in expected}
-    model.eval()
     with torch.no_grad():
-        for images, labels in validation_loader:
-            images = images.to(device)
-            labels = labels.view(-1).to(device)
-            _, embeddings = model(images)
+        for embeddings, labels in zip(embedding_batches, label_batches):
+            embeddings = embeddings.to(device)
+            labels = labels.to(device)
             if embeddings.ndim != 2 or embeddings.size(1) != prototype_matrix.size(1):
                 raise ValueError("Validation embedding dimension does not match prototypes")
             if not torch.isfinite(embeddings).all():

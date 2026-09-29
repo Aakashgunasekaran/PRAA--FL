@@ -8,7 +8,9 @@ from federated.prs import (
     compute_prs,
     consistency_scores,
     stability_scores,
+    validation_embeddings,
     validation_scores,
+    validation_scores_from_embeddings,
 )
 
 
@@ -90,3 +92,25 @@ def test_validation_score_uses_prototype_representation():
         {0: torch.tensor([1.0, 0.0]), 1: torch.tensor([0.0, 1.0])},
     )
     assert scores == {0: 1.0, 1: 1.0}
+
+
+def test_cached_validation_embeddings_preserve_scores():
+    class Representation(torch.nn.Module):
+        def forward(self, images):
+            return images, images
+
+    loader = [
+        (torch.tensor([[1.0, 0.0], [0.0, 1.0]]), torch.tensor([0, 1])),
+        (torch.tensor([[0.9, 0.1], [0.1, 0.9]]), torch.tensor([0, 1])),
+    ]
+    prototypes = {
+        0: torch.tensor([1.0, 0.0]),
+        1: torch.tensor([0.0, 1.0]),
+    }
+    model = Representation()
+    direct = validation_scores(model, loader, [0, 1], prototypes)
+    embeddings, labels = validation_embeddings(model, loader)
+    cached = validation_scores_from_embeddings(
+        embeddings, labels, [0, 1], prototypes
+    )
+    assert cached == direct
