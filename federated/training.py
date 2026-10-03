@@ -1,4 +1,6 @@
-"""Reusable Algorithm 1 loop with validation-driven scheduling and checkpoint/resume support."""
+"""Reusable Algorithm 1 loop with validation-driven scheduling
+and checkpoint/resume support.
+"""
 
 from pathlib import Path
 import json
@@ -20,7 +22,9 @@ def _restore_client_runtime_state(client, state):
     """Restore client state required to continue training."""
     client._learning_rate = float(state["learning_rate"])
     client._scheduler_state = state["scheduler_state"]
-    client._pending_validation_loss = state["pending_validation_loss"]
+    client._pending_validation_loss = state[
+        "pending_validation_loss"
+    ]
 
 
 def _save_checkpoint(
@@ -31,6 +35,7 @@ def _save_checkpoint(
     history,
 ):
     """Save the complete state required to resume training."""
+
     checkpoint = {
         "round": int(round_number),
         "global_model_state": server.get_global_state(),
@@ -41,7 +46,10 @@ def _save_checkpoint(
         },
     }
 
-    torch.save(checkpoint, checkpoint_path)
+    torch.save(
+        checkpoint,
+        checkpoint_path,
+    )
 
 
 def _load_checkpoint(
@@ -50,6 +58,7 @@ def _load_checkpoint(
     clients,
 ):
     """Restore global model, history, and client runtime state."""
+
     checkpoint = torch.load(
         checkpoint_path,
         map_location="cpu",
@@ -87,23 +96,15 @@ def run_federated_training(
 ):
     history = []
 
-    client_state_dir = None
     checkpoint_dir = None
 
     if output_dir:
         output_path = Path(output_dir)
 
-        client_state_dir = (
-            output_path / "client_states"
-        )
-        client_state_dir.mkdir(
-            parents=True,
-            exist_ok=True,
-        )
-
         checkpoint_dir = (
             output_path / "checkpoints"
         )
+
         checkpoint_dir.mkdir(
             parents=True,
             exist_ok=True,
@@ -115,6 +116,7 @@ def run_federated_training(
     # Resume from checkpoint
     # ---------------------------------------------------------
     if resume_from is not None:
+
         checkpoint_path = Path(resume_from)
 
         if not checkpoint_path.exists():
@@ -133,9 +135,15 @@ def run_federated_training(
         print("=" * 60)
         print("RESUMING FEDERATED TRAINING")
         print("=" * 60)
-        print(f"Checkpoint: {checkpoint_path}")
-        print(f"Completed rounds: {completed_round}")
-        print(f"Starting from round: {start_round}")
+        print(
+            f"Checkpoint: {checkpoint_path}"
+        )
+        print(
+            f"Completed rounds: {completed_round}"
+        )
+        print(
+            f"Starting from round: {start_round}"
+        )
         print("=" * 60)
 
     # ---------------------------------------------------------
@@ -145,6 +153,7 @@ def run_federated_training(
         start_round,
         config["num_rounds"] + 1,
     ):
+
         selected = select_clients(
             config["num_clients"],
             config["clients_per_round"],
@@ -152,14 +161,23 @@ def run_federated_training(
             round_number,
         )
 
-        states, sizes, client_metrics = [], [], []
+        states = []
+        sizes = []
+        client_metrics = []
 
+        # Global model BEFORE local client training
         before = server.get_global_state()
 
+        # -----------------------------------------------------
+        # Client local training
+        # -----------------------------------------------------
         for client_id in selected:
+
             state, size, metrics = clients[
                 client_id
-            ].client_update(before)
+            ].client_update(
+                before
+            )
 
             states.append(state)
             sizes.append(size)
@@ -171,38 +189,16 @@ def run_federated_training(
                 }
             )
 
-            # Existing client-state persistence
-            if client_state_dir is not None:
-                payload = {
-                    "client_id": int(client_id),
-                    "round": int(round_number),
-                    "model_state_dict": state,
-                }
-
-                torch.save(
-                    payload,
-                    client_state_dir
-                    / f"client_{client_id}.pt",
-                )
-
-                round_dir = (
-                    client_state_dir
-                    / f"round_{round_number}"
-                )
-
-                round_dir.mkdir(exist_ok=True)
-
-                torch.save(
-                    payload,
-                    round_dir
-                    / f"client_{client_id}.pt",
-                )
-
         # -----------------------------------------------------
         # Server aggregation
         # -----------------------------------------------------
+        aggregated_state = server.aggregate(
+            states,
+            sizes,
+        )[0]
+
         server.set_global_state(
-            server.aggregate(states, sizes)[0]
+            aggregated_state
         )
 
         # -----------------------------------------------------
@@ -216,6 +212,7 @@ def run_federated_training(
         # Scheduler update
         # -----------------------------------------------------
         for client_id in selected:
+
             clients[
                 client_id
             ].step_scheduler(
@@ -225,11 +222,11 @@ def run_federated_training(
             )
 
         # -----------------------------------------------------
-        # Record round
+        # Record completed round
         # -----------------------------------------------------
         history.append(
             {
-                "round": round_number,
+                "round": int(round_number),
                 "selected_clients": selected,
                 "client_metrics": client_metrics,
                 **validation,
@@ -240,9 +237,10 @@ def run_federated_training(
         )
 
         # -----------------------------------------------------
-        # Checkpoint AFTER completed round
+        # Save checkpoint AFTER the entire round is complete
         # -----------------------------------------------------
         if checkpoint_dir is not None:
+
             checkpoint_path = (
                 checkpoint_dir
                 / f"checkpoint_round_{round_number}.pt"
@@ -257,13 +255,15 @@ def run_federated_training(
             )
 
             print(
-                f"[Checkpoint] Round {round_number} saved."
+                f"[Checkpoint] Round "
+                f"{round_number} saved."
             )
 
     # ---------------------------------------------------------
     # Final artifacts
     # ---------------------------------------------------------
     if output_dir:
+
         path = Path(output_dir)
 
         path.mkdir(
@@ -271,6 +271,7 @@ def run_federated_training(
             exist_ok=True,
         )
 
+        # Save configuration
         (path / "config.json").write_text(
             json.dumps(
                 config,
@@ -278,6 +279,7 @@ def run_federated_training(
             )
         )
 
+        # Save complete metrics history
         (path / "metrics.json").write_text(
             json.dumps(
                 history,
@@ -285,6 +287,7 @@ def run_federated_training(
             )
         )
 
+        # Save final global model
         torch.save(
             {
                 "model_state_dict":
