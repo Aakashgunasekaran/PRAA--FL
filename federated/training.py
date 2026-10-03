@@ -52,6 +52,27 @@ def _save_checkpoint(
     )
 
 
+def _cleanup_old_checkpoints(checkpoint_dir, keep=2):
+    """Keep only the newest few checkpoints to control disk usage."""
+
+    checkpoints = sorted(
+        checkpoint_dir.glob("checkpoint_round_*.pt"),
+        key=lambda p: int(
+            p.stem.split("_")[-1]
+        )
+    )
+
+    old_checkpoints = checkpoints[:-keep]
+
+    for checkpoint in old_checkpoints:
+        checkpoint.unlink()
+
+        print(
+            f"[Checkpoint] Removed old checkpoint: "
+            f"{checkpoint.name}"
+        )
+
+
 def _load_checkpoint(
     checkpoint_path,
     server,
@@ -252,6 +273,14 @@ def run_federated_training(
                 server,
                 clients,
                 history,
+            )
+
+            # Keep only the newest two checkpoints.
+            # This prevents the 200-round experiment from
+            # consuming the entire Kaggle working disk.
+            _cleanup_old_checkpoints(
+                checkpoint_dir,
+                keep=2,
             )
 
             print(
