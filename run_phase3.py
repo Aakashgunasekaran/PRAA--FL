@@ -13,6 +13,7 @@ def main(
     num_rounds=1,
     clients_per_round=10,
     resume_from=None,
+    output_dir="results/phase3",
 ):
     with contextlib.redirect_stdout(
         io.StringIO()
@@ -121,6 +122,11 @@ def main(
         f"Device: {device}"
     )
 
+    print(
+        f"Output directory: "
+        f"{output_dir}"
+    )
+
     if resume_from is not None:
         print(
             f"Resume checkpoint: "
@@ -148,7 +154,7 @@ def main(
         clients,
         validation_loader,
         config,
-        output_dir="results/phase3",
+        output_dir=output_dir,
         resume_from=resume_from,
     )
 
@@ -225,6 +231,16 @@ if __name__ == "__main__":
         ),
     )
 
+    parser.add_argument(
+        "--output-dir",
+        type=str,
+        default="results/phase3",
+        help=(
+            "Directory for Phase 3 "
+            "checkpoints and artifacts"
+        ),
+    )
+
     args = parser.parse_args()
 
     main(
@@ -232,4 +248,5 @@ if __name__ == "__main__":
         clients_per_round=
             args.clients_per_round,
         resume_from=args.resume,
+        output_dir=args.output_dir,
     )
