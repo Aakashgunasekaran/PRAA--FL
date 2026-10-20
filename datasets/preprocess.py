@@ -1,4 +1,5 @@
 
+import os
 import random
 
 import numpy as np
@@ -44,23 +45,31 @@ transform = transforms.Compose([
 # Load Datasets
 # ============================================================
 
-train_dataset = DataClass(
-    split="train",
-    transform=transform,
-    download=True
-)
+if os.environ.get("PRAA_SYNTHETIC_DATA") == "1":
+    # OFFLINE tests / smoke runs only: PathMNIST-shaped synthetic data (see datasets/synthetic.py).
+    from datasets.synthetic import SyntheticPathMNIST
 
-val_dataset = DataClass(
-    split="val",
-    transform=transform,
-    download=True
-)
+    train_dataset = SyntheticPathMNIST("train", transform=transform)
+    val_dataset = SyntheticPathMNIST("val", transform=transform)
+    test_dataset = SyntheticPathMNIST("test", transform=transform)
+else:
+    train_dataset = DataClass(
+        split="train",
+        transform=transform,
+        download=True
+    )
 
-test_dataset = DataClass(
-    split="test",
-    transform=transform,
-    download=True
-)
+    val_dataset = DataClass(
+        split="val",
+        transform=transform,
+        download=True
+    )
+
+    test_dataset = DataClass(
+        split="test",
+        transform=transform,
+        download=True
+    )
 
 
 # ============================================================

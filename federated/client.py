@@ -3,7 +3,7 @@ import torch
 from torch import nn, optim
 
 from federated.client_data import get_client_dataset
-from models.classifier import FLAMEModel
+from models.classifier import FLAMEModel, model_kwargs_from_config
 from models.masking import RandomPatchMasker
 from training.episodes import make_support_query
 from training.losses import compute_mae_loss, compute_proto_loss, combine_losses
@@ -41,10 +41,7 @@ class Client:
 
     def _create_training_components(self):
         torch.manual_seed(self.config["seed"] + self.client_id)
-        self.model = FLAMEModel(
-            embedding_dim=self.config["embedding_dim"],
-            num_classes=self.config["num_classes"],
-        ).to(self.device)
+        self.model = FLAMEModel(**model_kwargs_from_config(self.config)).to(self.device)
         self.optimizer = optim.Adam(
             self.model.parameters(),
             lr=self._learning_rate,
@@ -61,7 +58,7 @@ class Client:
             self.scheduler.step(self._pending_validation_loss)
             self._pending_validation_loss = None
 
-    def client_update(self, global_state_dict):
+    def client_update(self, global_state_dict, after_update=None):
         torch.manual_seed(self.config["seed"] + self.client_id)
         self._create_training_components()
         self.model.load_state_dict(global_state_dict)
@@ -125,6 +122,10 @@ class Client:
             for key in ("mae_loss", "proto_loss", "combined_loss"):
                 stats[key] /= stats["steps"]
         state = {k: v.detach().cpu().clone() for k, v in self.model.state_dict().items()}
+        if after_update is not None:
+            # PRAA hook: lets the caller read the freshly trained LOCAL model (for prototype
+            # extraction) before it is released.  Default None keeps Phase 3 behaviour unchanged.
+            stats["hook_result"] = after_update(self)
         self._learning_rate = self.optimizer.param_groups[0]["lr"]
         self._scheduler_state = self.scheduler.state_dict()
         del self.model

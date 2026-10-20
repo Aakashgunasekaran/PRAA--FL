@@ -1,0 +1,2363 @@
+{
+  "schema_version": "praa-fl.phase6.prs/1",
+  "phase": 6,
+  "status": "NO_PRS_COMPUTABLE",
+  "policy": "strict",
+  "extension_notice": null,
+  "formula": "PRS = (w_v*V + w_s*S + w_c*C)/(w_v+w_s+w_c); strict: all three components valid",
+  "config": {
+    "prs": {
+      "validation_weight": 0.3333333333333333,
+      "stability_weight": 0.3333333333333333,
+      "consistency_weight": 0.3333333333333333,
+      "epsilon": 1e-08
+    },
+    "tau": 1.0,
+    "weight_floor": 0.05,
+    "weight_cap": 5.0,
+    "min_assessed": 2,
+    "client_reduce": "sample_weighted",
+    "missing_component_policy": "strict",
+    "stability_window": 3,
+    "apply_to_model": true,
+    "apply_to_prototypes": true
+  },
+  "source": {
+    "pram_mode": "exploratory",
+    "pram_status": "PARTIAL_EVIDENCE_MISSING",
+    "pram_formula_version": "pram/1",
+    "pram_sha256": "ee72229d4300dd9d940d1333226b5d02ce3890b0ed69242fc1c4a3612f4c8d1b",
+    "test_set_accessed": false
+  },
+  "summary": {
+    "records": 126,
+    "records_with_prs": 0,
+    "clients": 50,
+    "clients_assessed": 0,
+    "multiplier_info": {
+      "num_assessed": 0,
+      "num_total": 50,
+      "applied": false,
+      "reason": "fewer_than_min_assessed"
+    }
+  },
+  "clients": {
+    "0": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 12,
+      "multiplier": 1.0,
+      "flame_weight": 0.01362088535754824,
+      "praa_weight": 0.01362088535754824
+    },
+    "1": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 24,
+      "multiplier": 1.0,
+      "flame_weight": 0.02724177071509648,
+      "praa_weight": 0.02724177071509648
+    },
+    "2": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 28,
+      "multiplier": 1.0,
+      "flame_weight": 0.03178206583427923,
+      "praa_weight": 0.03178206583427923
+    },
+    "3": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 67,
+      "multiplier": 1.0,
+      "flame_weight": 0.07604994324631101,
+      "praa_weight": 0.07604994324631101
+    },
+    "4": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 4,
+      "multiplier": 1.0,
+      "flame_weight": 0.004540295119182747,
+      "praa_weight": 0.004540295119182747
+    },
+    "5": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 8,
+      "multiplier": 1.0,
+      "flame_weight": 0.009080590238365494,
+      "praa_weight": 0.009080590238365494
+    },
+    "6": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 3,
+      "multiplier": 1.0,
+      "flame_weight": 0.00340522133938706,
+      "praa_weight": 0.00340522133938706
+    },
+    "7": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 4,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 13,
+      "multiplier": 1.0,
+      "flame_weight": 0.014755959137343927,
+      "praa_weight": 0.014755959137343927
+    },
+    "8": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 9,
+      "multiplier": 1.0,
+      "flame_weight": 0.01021566401816118,
+      "praa_weight": 0.01021566401816118
+    },
+    "9": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 39,
+      "multiplier": 1.0,
+      "flame_weight": 0.04426787741203178,
+      "praa_weight": 0.04426787741203178
+    },
+    "10": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 11,
+      "multiplier": 1.0,
+      "flame_weight": 0.012485811577752554,
+      "praa_weight": 0.012485811577752554
+    },
+    "11": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 34,
+      "multiplier": 1.0,
+      "flame_weight": 0.03859250851305335,
+      "praa_weight": 0.03859250851305335
+    },
+    "12": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 4,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 16,
+      "multiplier": 1.0,
+      "flame_weight": 0.018161180476730987,
+      "praa_weight": 0.018161180476730987
+    },
+    "13": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 16,
+      "multiplier": 1.0,
+      "flame_weight": 0.018161180476730987,
+      "praa_weight": 0.018161180476730987
+    },
+    "14": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 2,
+      "multiplier": 1.0,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.0022701475595913734
+    },
+    "15": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 5,
+      "multiplier": 1.0,
+      "flame_weight": 0.0056753688989784334,
+      "praa_weight": 0.0056753688989784334
+    },
+    "16": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 3,
+      "multiplier": 1.0,
+      "flame_weight": 0.00340522133938706,
+      "praa_weight": 0.00340522133938706
+    },
+    "17": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 22,
+      "multiplier": 1.0,
+      "flame_weight": 0.024971623155505107,
+      "praa_weight": 0.024971623155505107
+    },
+    "18": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 15,
+      "multiplier": 1.0,
+      "flame_weight": 0.0170261066969353,
+      "praa_weight": 0.0170261066969353
+    },
+    "19": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 2,
+      "multiplier": 1.0,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.0022701475595913734
+    },
+    "20": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 30,
+      "multiplier": 1.0,
+      "flame_weight": 0.0340522133938706,
+      "praa_weight": 0.0340522133938706
+    },
+    "21": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 30,
+      "multiplier": 1.0,
+      "flame_weight": 0.0340522133938706,
+      "praa_weight": 0.0340522133938706
+    },
+    "22": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 4,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 19,
+      "multiplier": 1.0,
+      "flame_weight": 0.021566401816118047,
+      "praa_weight": 0.021566401816118047
+    },
+    "23": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 5,
+      "multiplier": 1.0,
+      "flame_weight": 0.0056753688989784334,
+      "praa_weight": 0.0056753688989784334
+    },
+    "24": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 11,
+      "multiplier": 1.0,
+      "flame_weight": 0.012485811577752554,
+      "praa_weight": 0.012485811577752554
+    },
+    "25": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 48,
+      "multiplier": 1.0,
+      "flame_weight": 0.05448354143019296,
+      "praa_weight": 0.05448354143019296
+    },
+    "26": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 4,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 21,
+      "multiplier": 1.0,
+      "flame_weight": 0.02383654937570942,
+      "praa_weight": 0.02383654937570942
+    },
+    "27": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 19,
+      "multiplier": 1.0,
+      "flame_weight": 0.021566401816118047,
+      "praa_weight": 0.021566401816118047
+    },
+    "28": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 24,
+      "multiplier": 1.0,
+      "flame_weight": 0.02724177071509648,
+      "praa_weight": 0.02724177071509648
+    },
+    "29": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 31,
+      "multiplier": 1.0,
+      "flame_weight": 0.03518728717366629,
+      "praa_weight": 0.03518728717366629
+    },
+    "30": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 2,
+      "multiplier": 1.0,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.0022701475595913734
+    },
+    "31": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 9,
+      "multiplier": 1.0,
+      "flame_weight": 0.01021566401816118,
+      "praa_weight": 0.01021566401816118
+    },
+    "32": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 4,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 29,
+      "multiplier": 1.0,
+      "flame_weight": 0.032917139614074914,
+      "praa_weight": 0.032917139614074914
+    },
+    "33": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 4,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 20,
+      "multiplier": 1.0,
+      "flame_weight": 0.022701475595913734,
+      "praa_weight": 0.022701475595913734
+    },
+    "34": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 5,
+      "multiplier": 1.0,
+      "flame_weight": 0.0056753688989784334,
+      "praa_weight": 0.0056753688989784334
+    },
+    "35": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 18,
+      "multiplier": 1.0,
+      "flame_weight": 0.02043132803632236,
+      "praa_weight": 0.02043132803632236
+    },
+    "36": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 10,
+      "multiplier": 1.0,
+      "flame_weight": 0.011350737797956867,
+      "praa_weight": 0.011350737797956867
+    },
+    "37": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 4,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 7,
+      "multiplier": 1.0,
+      "flame_weight": 0.007945516458569807,
+      "praa_weight": 0.007945516458569807
+    },
+    "38": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 2,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 3,
+      "multiplier": 1.0,
+      "flame_weight": 0.00340522133938706,
+      "praa_weight": 0.00340522133938706
+    },
+    "39": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 2,
+      "multiplier": 1.0,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.0022701475595913734
+    },
+    "40": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 2,
+      "multiplier": 1.0,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.0022701475595913734
+    },
+    "41": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 4,
+      "multiplier": 1.0,
+      "flame_weight": 0.004540295119182747,
+      "praa_weight": 0.004540295119182747
+    },
+    "42": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 2,
+      "multiplier": 1.0,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.0022701475595913734
+    },
+    "43": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 7,
+      "multiplier": 1.0,
+      "flame_weight": 0.007945516458569807,
+      "praa_weight": 0.007945516458569807
+    },
+    "44": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 47,
+      "multiplier": 1.0,
+      "flame_weight": 0.053348467650397274,
+      "praa_weight": 0.053348467650397274
+    },
+    "45": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 5,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 28,
+      "multiplier": 1.0,
+      "flame_weight": 0.03178206583427923,
+      "praa_weight": 0.03178206583427923
+    },
+    "46": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 4,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 31,
+      "multiplier": 1.0,
+      "flame_weight": 0.03518728717366629,
+      "praa_weight": 0.03518728717366629
+    },
+    "47": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 6,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 74,
+      "multiplier": 1.0,
+      "flame_weight": 0.08399545970488081,
+      "praa_weight": 0.08399545970488081
+    },
+    "48": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 3,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 8,
+      "multiplier": 1.0,
+      "flame_weight": 0.009080590238365494,
+      "praa_weight": 0.009080590238365494
+    },
+    "49": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 2,
+      "multiplier": 1.0,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.0022701475595913734
+    }
+  },
+  "records": [
+    {
+      "client_id": 0,
+      "class_id": 2,
+      "sample_count": 11,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 0,
+      "class_id": 7,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 1,
+      "class_id": 2,
+      "sample_count": 8,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 1,
+      "class_id": 5,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 1,
+      "class_id": 8,
+      "sample_count": 15,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 2,
+      "class_id": 3,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 2,
+      "class_id": 4,
+      "sample_count": 18,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 2,
+      "class_id": 8,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 3,
+      "class_id": 7,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 3,
+      "class_id": 8,
+      "sample_count": 66,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 4,
+      "class_id": 0,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 4,
+      "class_id": 6,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 5,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 5,
+      "class_id": 8,
+      "sample_count": 7,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 6,
+      "class_id": 2,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 7,
+      "class_id": 1,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 7,
+      "class_id": 2,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 7,
+      "class_id": 5,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 7,
+      "class_id": 8,
+      "sample_count": 6,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 8,
+      "class_id": 1,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 8,
+      "class_id": 8,
+      "sample_count": 6,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 9,
+      "class_id": 0,
+      "sample_count": 20,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 9,
+      "class_id": 8,
+      "sample_count": 19,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 10,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 10,
+      "class_id": 6,
+      "sample_count": 10,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 11,
+      "class_id": 0,
+      "sample_count": 10,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 11,
+      "class_id": 1,
+      "sample_count": 21,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 11,
+      "class_id": 3,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 12,
+      "class_id": 1,
+      "sample_count": 8,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 12,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 12,
+      "class_id": 3,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 12,
+      "class_id": 5,
+      "sample_count": 5,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 13,
+      "class_id": 3,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 13,
+      "class_id": 4,
+      "sample_count": 10,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 13,
+      "class_id": 7,
+      "sample_count": 4,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 14,
+      "class_id": 0,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 14,
+      "class_id": 4,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 15,
+      "class_id": 1,
+      "sample_count": 4,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 15,
+      "class_id": 4,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 16,
+      "class_id": 5,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 17,
+      "class_id": 1,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 17,
+      "class_id": 4,
+      "sample_count": 8,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 17,
+      "class_id": 6,
+      "sample_count": 13,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 18,
+      "class_id": 2,
+      "sample_count": 15,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 19,
+      "class_id": 2,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 20,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 20,
+      "class_id": 4,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 20,
+      "class_id": 7,
+      "sample_count": 27,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 21,
+      "class_id": 0,
+      "sample_count": 14,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 21,
+      "class_id": 4,
+      "sample_count": 15,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 21,
+      "class_id": 6,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 22,
+      "class_id": 2,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 22,
+      "class_id": 3,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 22,
+      "class_id": 4,
+      "sample_count": 7,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 22,
+      "class_id": 6,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 23,
+      "class_id": 2,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 23,
+      "class_id": 3,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 23,
+      "class_id": 7,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 24,
+      "class_id": 0,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 24,
+      "class_id": 3,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 24,
+      "class_id": 5,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 25,
+      "class_id": 7,
+      "sample_count": 48,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 26,
+      "class_id": 1,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 26,
+      "class_id": 3,
+      "sample_count": 13,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 26,
+      "class_id": 6,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 26,
+      "class_id": 8,
+      "sample_count": 6,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 27,
+      "class_id": 2,
+      "sample_count": 10,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 27,
+      "class_id": 6,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 28,
+      "class_id": 1,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 28,
+      "class_id": 2,
+      "sample_count": 13,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 28,
+      "class_id": 3,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 29,
+      "class_id": 3,
+      "sample_count": 30,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 29,
+      "class_id": 4,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 30,
+      "class_id": 3,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 30,
+      "class_id": 5,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 31,
+      "class_id": 0,
+      "sample_count": 8,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 31,
+      "class_id": 7,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 32,
+      "class_id": 0,
+      "sample_count": 4,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 32,
+      "class_id": 3,
+      "sample_count": 15,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 32,
+      "class_id": 4,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 32,
+      "class_id": 6,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 33,
+      "class_id": 1,
+      "sample_count": 14,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 33,
+      "class_id": 3,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 33,
+      "class_id": 4,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 33,
+      "class_id": 7,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 34,
+      "class_id": 5,
+      "sample_count": 5,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 35,
+      "class_id": 1,
+      "sample_count": 4,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 35,
+      "class_id": 6,
+      "sample_count": 11,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 35,
+      "class_id": 8,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 36,
+      "class_id": 1,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 36,
+      "class_id": 7,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 37,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 37,
+      "class_id": 5,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 37,
+      "class_id": 6,
+      "sample_count": 4,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 37,
+      "class_id": 7,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 38,
+      "class_id": 1,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 38,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 39,
+      "class_id": 7,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 40,
+      "class_id": 6,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 41,
+      "class_id": 0,
+      "sample_count": 4,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 42,
+      "class_id": 7,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 43,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 43,
+      "class_id": 5,
+      "sample_count": 5,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 43,
+      "class_id": 8,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 44,
+      "class_id": 1,
+      "sample_count": 6,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 44,
+      "class_id": 5,
+      "sample_count": 40,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 44,
+      "class_id": 6,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 45,
+      "class_id": 0,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 45,
+      "class_id": 2,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 45,
+      "class_id": 3,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 45,
+      "class_id": 4,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 45,
+      "class_id": 5,
+      "sample_count": 10,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 46,
+      "class_id": 1,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 46,
+      "class_id": 2,
+      "sample_count": 16,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 46,
+      "class_id": 3,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 46,
+      "class_id": 6,
+      "sample_count": 12,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 47,
+      "class_id": 0,
+      "sample_count": 17,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 47,
+      "class_id": 1,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 47,
+      "class_id": 2,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 47,
+      "class_id": 3,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 47,
+      "class_id": 4,
+      "sample_count": 10,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 47,
+      "class_id": 5,
+      "sample_count": 43,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 48,
+      "class_id": 1,
+      "sample_count": 6,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 48,
+      "class_id": 7,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 48,
+      "class_id": 8,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 49,
+      "class_id": 4,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    }
+  ],
+  "note": "No record has a PRS: client-local snapshots (stability) do not exist for the preserved run, so every client keeps its FLAME weight. This is a faithful result, not a bug."
+}

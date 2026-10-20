@@ -1,11 +1,15 @@
 venv/
 __pycache__/
 .ipynb_checkpoints/
+.pytest_cache/
 *.pyc
 *.pyo
 *.pyd
-
-results/
-
-
 .vscode/settings.json
+
+# Large / regenerable run outputs (the preserved original evidence under results/phase3-5 IS tracked)
+results/runs/
+results/smoke_e2e/
+*.ckpt
+checkpoints/
+final_model.pt

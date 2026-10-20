@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tissue patch classifier · PRAA-FL</title>
+  <!-- Leave empty when the page is served by the backend. Set to e.g. http://127.0.0.1:8000 if hosted elsewhere. -->
+  <meta name="api-base" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Tissue patch classifier</h1>
+      <p class="lede">Upload a colorectal histology image. The PRAA-FL model sorts it into one of nine PathMNIST tissue types.</p>
+    </div>
+    <p id="status" class="status" role="status" data-state="loading">Connecting to the model…</p>
+  </header>
+
+  <div id="banner" class="banner" hidden></div>
+
+  <main class="layout">
+    <section class="stage" aria-labelledby="stage-title">
+      <h2 id="stage-title" class="sr-only">Image</h2>
+      <div id="drop" class="field" tabindex="0" role="button"
+           aria-label="Choose a tissue image. You can also drop or paste one.">
+        <img id="preview" alt="Your uploaded image" hidden>
+        <div id="hint" class="field-hint">
+          <strong>Drop an image here</strong>
+          <span>or click to browse, or paste from the clipboard</span>
+        </div>
+        <div id="busy" class="field-busy" hidden><span class="spinner" aria-hidden="true"></span>Classifying…</div>
+      </div>
+      <input id="file" type="file" accept="image/png,image/jpeg,image/bmp,image/tiff,image/webp" hidden>
+      <div class="actions">
+        <button id="choose" type="button" class="btn primary">Choose image</button>
+        <button id="clear" type="button" class="btn" disabled>Clear</button>
+      </div>
+      <p id="filename" class="muted small"></p>
+    </section>
+
+    <section class="results" aria-labelledby="results-title" aria-live="polite">
+      <h2 id="results-title" class="sr-only">Result</h2>
+
+      <div id="error" class="error" role="alert" hidden></div>
+
+      <div id="empty" class="empty">
+        <p class="empty-title">No image yet</p>
+        <p class="muted">Add a tissue image on the left and the predicted class appears here, with the probability of every class.</p>
+      </div>
+
+      <div id="result" hidden>
+        <section class="disease-result" aria-labelledby="disease-title">
+          <div>
+            <p id="disease-title" class="disease-label">Disease-related tissue signal</p>
+            <p class="disease-name">Colorectal adenocarcinoma epithelium</p>
+            <p id="disease-status" class="disease-status"></p>
+          </div>
+          <p class="disease-probability"><span id="disease-prob"></span><span class="muted small">model probability</span></p>
+          <p class="disease-note">Research tissue classification only. This is not a medical diagnosis and cannot rule disease in or out.</p>
+        </section>
+
+        <p class="muted small">Predicted tissue type</p>
+        <p id="pred-name" class="pred-name"></p>
+        <p class="pred-line"><span id="pred-prob" class="pred-prob"></span> <span id="pred-code" class="pill"></span></p>
+
+        <ol id="bars" class="bars"></ol>
+
+        <div class="seen">
+          <img id="seen" alt="The image as the model sees it, 28 by 28 pixels" width="112" height="112">
+          <p class="muted small">The model works on a 28 × 28 pixel centre crop, which is PathMNIST's native size. This is what it received.</p>
+        </div>
+        <p id="meta" class="muted small"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Research prototype, not a medical device. The model was trained on 28 × 28 H&amp;E-stained colorectal tissue patches, so photos of anything else give meaningless results.</p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

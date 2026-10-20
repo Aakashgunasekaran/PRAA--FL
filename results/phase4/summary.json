@@ -1,0 +1,348 @@
+{
+  "phase": 4,
+  "status": "GLOBAL_MODEL_PROTOTYPES_NOT_FINAL",
+  "mode": "global_model_prototypes",
+  "dataset": "PathMNIST",
+  "data_source": "Phase 3 FLAME final global model; Phase 2 client training partitions",
+  "prototype_origin": "global_model_applied_to_client_partition",
+  "prototype_origin_description": "Class-wise means of embeddings computed by the saved Phase 3 GLOBAL model on the samples permitted by the label policy from each simulated client's Phase 2 partition. They are not representations from client-locally trained models.",
+  "local_model_states": "unavailable",
+  "temporal_stability": "unavailable",
+  "clients_with_local_states": 0,
+  "clients_using_global_model": 50,
+  "representation": "FLAME projected embedding (model.proto(model.encoder(x)))",
+  "label_policy": "labeled_subset",
+  "num_clients": 50,
+  "clients_processed": 50,
+  "clients_with_prototypes": 50,
+  "embedding_dimension": 128,
+  "num_classes": 9,
+  "total_prototypes": 126,
+  "classes_observed": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "samples_used_per_client": {
+    "0": 12,
+    "1": 24,
+    "2": 28,
+    "3": 67,
+    "4": 4,
+    "5": 8,
+    "6": 3,
+    "7": 13,
+    "8": 9,
+    "9": 39,
+    "10": 11,
+    "11": 34,
+    "12": 16,
+    "13": 16,
+    "14": 2,
+    "15": 5,
+    "16": 3,
+    "17": 22,
+    "18": 15,
+    "19": 2,
+    "20": 30,
+    "21": 30,
+    "22": 19,
+    "23": 5,
+    "24": 11,
+    "25": 48,
+    "26": 21,
+    "27": 19,
+    "28": 24,
+    "29": 31,
+    "30": 2,
+    "31": 9,
+    "32": 29,
+    "33": 20,
+    "34": 5,
+    "35": 18,
+    "36": 10,
+    "37": 7,
+    "38": 3,
+    "39": 2,
+    "40": 2,
+    "41": 4,
+    "42": 2,
+    "43": 7,
+    "44": 47,
+    "45": 28,
+    "46": 31,
+    "47": 74,
+    "48": 8,
+    "49": 2
+  },
+  "classes_per_client": {
+    "0": [
+      2,
+      7
+    ],
+    "1": [
+      2,
+      5,
+      8
+    ],
+    "2": [
+      3,
+      4,
+      8
+    ],
+    "3": [
+      7,
+      8
+    ],
+    "4": [
+      0,
+      6
+    ],
+    "5": [
+      2,
+      8
+    ],
+    "6": [
+      2
+    ],
+    "7": [
+      1,
+      2,
+      5,
+      8
+    ],
+    "8": [
+      1,
+      8
+    ],
+    "9": [
+      0,
+      8
+    ],
+    "10": [
+      2,
+      6
+    ],
+    "11": [
+      0,
+      1,
+      3
+    ],
+    "12": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "13": [
+      3,
+      4,
+      7
+    ],
+    "14": [
+      0,
+      4
+    ],
+    "15": [
+      1,
+      4
+    ],
+    "16": [
+      5
+    ],
+    "17": [
+      1,
+      4,
+      6
+    ],
+    "18": [
+      2
+    ],
+    "19": [
+      2
+    ],
+    "20": [
+      2,
+      4,
+      7
+    ],
+    "21": [
+      0,
+      4,
+      6
+    ],
+    "22": [
+      2,
+      3,
+      4,
+      6
+    ],
+    "23": [
+      2,
+      3,
+      7
+    ],
+    "24": [
+      0,
+      3,
+      5
+    ],
+    "25": [
+      7
+    ],
+    "26": [
+      1,
+      3,
+      6,
+      8
+    ],
+    "27": [
+      2,
+      6
+    ],
+    "28": [
+      1,
+      2,
+      3
+    ],
+    "29": [
+      3,
+      4
+    ],
+    "30": [
+      3,
+      5
+    ],
+    "31": [
+      0,
+      7
+    ],
+    "32": [
+      0,
+      3,
+      4,
+      6
+    ],
+    "33": [
+      1,
+      3,
+      4,
+      7
+    ],
+    "34": [
+      5
+    ],
+    "35": [
+      1,
+      6,
+      8
+    ],
+    "36": [
+      1,
+      7
+    ],
+    "37": [
+      2,
+      5,
+      6,
+      7
+    ],
+    "38": [
+      1,
+      2
+    ],
+    "39": [
+      7
+    ],
+    "40": [
+      6
+    ],
+    "41": [
+      0
+    ],
+    "42": [
+      7
+    ],
+    "43": [
+      2,
+      5,
+      8
+    ],
+    "44": [
+      1,
+      5,
+      6
+    ],
+    "45": [
+      0,
+      2,
+      3,
+      4,
+      5
+    ],
+    "46": [
+      1,
+      2,
+      3,
+      6
+    ],
+    "47": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "48": [
+      1,
+      7,
+      8
+    ],
+    "49": [
+      4
+    ]
+  },
+  "max_samples_per_client": null,
+  "state_dict_check": {
+    "tensors_in_checkpoint": 332,
+    "tensors_expected_by_model": 332,
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "shape_mismatches": [],
+    "strict_compatible": true
+  },
+  "checkpoint_top_level_keys": [
+    "history",
+    "model_state_dict"
+  ],
+  "phase3_dir": "/content/drive/MyDrive/phase3",
+  "output_dir": "/content/drive/MyDrive/phase4",
+  "source_provenance": {
+    "source_kind": "final_global_model",
+    "source_model_file": "final_model.pt",
+    "source_model_sha256": "cafc30c356db9f41fbf21674e040e526073d0a7645b5a5b9666fd4fe4869d2fd",
+    "source_round": 200,
+    "source_config_sha256": "e18f3bd38552ce15f19c4e5cce40662969ea450c33d6c3125827ff4e3e8264f1",
+    "checkpoint_crosscheck": {
+      "performed": true,
+      "file": "checkpoint_round_200.pt",
+      "round_matches": true,
+      "weights_identical": true
+    },
+    "partition_sha256": "c633b6e838486beb578ee37c99d5ae230e5d37916d97511eaf76433d0d0b8c73",
+    "partition_source": "Phase 2 Dirichlet partition rebuilt from flame_config",
+    "prototype_origin": "global_model_applied_to_client_partition",
+    "prototype_origin_description": "Class-wise means of embeddings computed by the saved Phase 3 GLOBAL model on the samples permitted by the label policy from each simulated client's Phase 2 partition. They are not representations from client-locally trained models.",
+    "client_local_model_states": "unavailable",
+    "temporal_stability_history": "unavailable"
+  },
+  "test_set_accessed": false,
+  "final_experiment_ready": false
+}

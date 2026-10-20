@@ -32,6 +32,41 @@ class Encoder(nn.Module):
         return self.projection(self.backbone(x))
 
 
+class SmallEncoder(nn.Module):
+    """Tiny CNN encoder for OFFLINE tests and CPU smoke runs only (not the paper's encoder)."""
+
+    def __init__(self, feature_dim: int = 128) -> None:
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Conv2d(3, 16, 3, stride=2, padding=1), nn.BatchNorm2d(16), nn.ReLU(inplace=True),
+            nn.Conv2d(16, 32, 3, stride=2, padding=1), nn.BatchNorm2d(32), nn.ReLU(inplace=True),
+            nn.Conv2d(32, 64, 3, stride=2, padding=1), nn.BatchNorm2d(64), nn.ReLU(inplace=True),
+            nn.AdaptiveAvgPool2d(1), nn.Flatten(), nn.Linear(64, feature_dim),
+        )
+        self.feature_dim = feature_dim
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        return self.net(x)
+
+
+ENCODERS = ("resnet50", "small_cnn")
+
+
+def model_kwargs_from_config(config) -> dict:
+    """Constructor kwargs for FLAMEModel from an experiment config.
+
+    The paper/Phase 3 configuration (ResNet-50, 2048-d features) carries none of the
+    optional keys, so the default model - and its checkpoint state-dict keys - are
+    unchanged for every preserved artefact.
+    """
+    kwargs = {"embedding_dim": config["embedding_dim"], "num_classes": config["num_classes"]}
+    if config.get("encoder", "resnet50") != "resnet50":
+        kwargs["encoder"] = config["encoder"]
+    if config.get("feature_dim") is not None:
+        kwargs["feature_dim"] = int(config["feature_dim"])
+    return kwargs
+
+
 class Decoder(nn.Module):
     """Transposed-convolution decoder producing exactly [B, 3, 28, 28]."""
 
@@ -77,9 +112,12 @@ class FLAMEModel(nn.Module):
         feature_dim: int = 2048,
         embedding_dim: int = 128,
         num_classes: int = 9,
+        encoder: str = "resnet50",
     ) -> None:
         super().__init__()
-        self.encoder = Encoder(feature_dim=feature_dim)
+        if encoder not in ENCODERS:
+            raise ValueError(f"encoder must be one of {ENCODERS}, got {encoder!r}")
+        self.encoder = Encoder(feature_dim=feature_dim) if encoder == "resnet50" else SmallEncoder(feature_dim)
         self.decoder = Decoder(feature_dim=feature_dim)
         self.proto = ProtoHead(feature_dim=feature_dim, embedding_dim=embedding_dim)
         self.classifier = nn.Linear(embedding_dim, num_classes)

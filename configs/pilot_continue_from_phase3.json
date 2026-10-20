@@ -1,0 +1,7 @@
+{
+  "_comment": "Cheaper controlled comparison: warm-start FLAME and PRAA from the PRESERVED Phase 3 final_model.pt for 30 further rounds (selection seeds continue at round 201). Set init_from to the checkpoint path on your machine/Drive.",
+  "num_rounds": 30,
+  "round_offset": 200,
+  "init_from": "results/phase3/final_model.pt",
+  "checkpoint_every": 5
+}

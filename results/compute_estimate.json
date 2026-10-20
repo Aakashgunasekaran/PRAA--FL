@@ -1,0 +1,30 @@
+{
+  "device_measured": "cpu",
+  "rounds": 200,
+  "local_steps": 116064,
+  "local_steps_source": "exact, from /home/claude/PRAA-FL/results/phase3/metrics.json (first 200 rounds)",
+  "measured_on_this_device": {
+    "step_time_s": 7.640461365381877,
+    "step_gflops": 835.2595968,
+    "fwd_ms_per_image": 15.756518580019474,
+    "flame_run_hours_if_this_device": 258.0583271405929
+  },
+  "t4_projection_hours_ESTIMATE": {
+    "util_0.25": {
+      "training": 13.298157728805926,
+      "evaluation_overhead_flame_family": 0.16706717041426614,
+      "praa_extra_local_pram": 0.6048983756378601,
+      "total_flame_run": 13.465224899220193,
+      "total_praa_run": 14.070123274858052
+    },
+    "util_0.5": {
+      "training": 6.649078864402963,
+      "evaluation_overhead_flame_family": 0.08353358520713307,
+      "praa_extra_local_pram": 0.30244918781893004,
+      "total_flame_run": 6.732612449610096,
+      "total_praa_run": 7.035061637429026
+    }
+  },
+  "fedavg_note": "supervised on ~900 labelled images: negligible (minutes) compared with FLAME/PRAA",
+  "caveat": "T4 numbers are FLOP-based projections, not measurements; Colab sessions may be interrupted, use --resume (checkpoints every 5 rounds)."
+}

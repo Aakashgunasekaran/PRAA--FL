@@ -1,0 +1,17 @@
+{
+  "_comment": "OFFLINE smoke profile: synthetic PathMNIST-shaped data + tiny CNN. Not PathMNIST, not comparable to the paper. Use with PRAA_SYNTHETIC_DATA=1.",
+  "num_clients": 10,
+  "clients_per_round": 5,
+  "num_rounds": 6,
+  "local_epochs": 1,
+  "batch_size": 32,
+  "min_samples_per_client": 10,
+  "label_fraction": 0.05,
+  "encoder": "small_cnn",
+  "feature_dim": 128,
+  "embedding_dim": 32,
+  "val_samples": 300,
+  "pram_val_samples": 150,
+  "eval_every": 1,
+  "checkpoint_every": 2
+}

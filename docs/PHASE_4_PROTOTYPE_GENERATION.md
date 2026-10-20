@@ -1,76 +1,82 @@
-# Phase 4: Prototype Generation
+# Phase 4: Prototype Generation (global-model prototypes)
 
-## Objective
+## What Phase 4 produces
 
-Phase 4 generates client-specific, class-wise prototypes from the learned
-FLAME representation. It does not calculate reliability or change federated
-aggregation.
+Phase 3 saved only the final global model (`final_model.pt`: `model_state_dict` +
+`history`) and `config.json`. It did not save per-client local models or per-round
+client snapshots. Phase 4 therefore applies the saved global model to each simulated
+client's Phase 2 partition and stores class-wise mean embeddings.
 
-## Input and representation
+These are **prototypes computed by the global model on each client's partition data**.
+They are not representations from client-locally trained models. Local model states and
+temporal stability are recorded as `unavailable`; nothing is synthesized.
 
-The runner loads the learned Phase 3 representation. Phase 3 now persists the
-latest trained state for each selected client after every round, including the
-client ID and round number. For each Phase 2 client training subset, it uses:
+The run is labelled `GLOBAL_MODEL_PROTOTYPES_NOT_FINAL` (mode `global_model_prototypes`)
+and `final_experiment_ready` is `false`.
+
+## Representation
 
 ```text
 PathMNIST image -> shared ResNet-50 encoder -> FLAME projection head
-             -> 128-dimensional projected embedding
+                -> 128-dimensional projected embedding   (model.proto(model.encoder(x)))
 ```
 
-No new encoder or neural network is created.
+No separate pretrained MAE encoder exists; the shared encoder is the MAE-trained one.
+The model runs in `eval()` mode under `torch.no_grad()`.
 
-## Prototype generation
+## Paths (Colab defaults)
 
-For client `k` and class `c`:
+| item | path |
+|---|---|
+| Phase 3 input | `/content/drive/MyDrive/phase3/` (`final_model.pt`, `config.json`) |
+| Phase 4 output | `/content/drive/MyDrive/phase4/` (`prototypes/client_<id>.pt`, `summary.json`) |
+| Smoke output | `/content/phase4_smoke/` (separate, never mixed with full output) |
+
+## Checkpoint validation (before anything is computed)
+
+Config equals the fixed project config; history is 200 consecutive rounds; weights are
+finite; the state dict is compared with a fresh `FLAMEModel` (missing / unexpected keys,
+shape mismatches) and loaded with `strict=True`; the report is stored in
+`summary.json["state_dict_check"]` together with the checkpoint's top-level keys.
+
+## Which samples contribute (`--label-policy`)
+
+* `labeled_subset` (default, the project's 1% policy): the client's labeled samples,
+  reconstructed exactly as `federated.client.Client` selects them (`seed + client_id`,
+  `max(2, int(n * 0.01))` samples).
+* `all_labels`: every sample in the client's partition.
+
+## Saved format
+
+One file per client, loadable with `weights_only=True`: `schema_version`, `client_id`,
+`class_ids`, `prototype_vectors [K, 128]`, `sample_counts`, `absent_class_ids`,
+`label_policy`, `provenance`, `config`, plus the legacy `prototypes` / `metadata` view.
+`provenance` includes the source model file, SHA-256, round, partition hash,
+`prototype_origin = global_model_applied_to_client_partition`,
+`client_local_model_states = unavailable`, `temporal_stability_history = unavailable`.
+Absent classes get no prototype and are listed in `absent_class_ids`.
+
+## Running
 
 ```text
-P(k,c) = mean(f(x_i)) for all client samples with y_i = c
+python run_phase4.py --smoke      # 5 clients, <= 64 samples  -> /content/phase4_smoke
+python run_phase4.py              # all 50 clients            -> /content/drive/MyDrive/phase4
 ```
 
-Only classes present in a client dataset receive prototypes. Absent classes
-are omitted; no zero or synthetic prototypes are created.
+All records are computed first and written afterwards; `summary.json` is written last,
+so a directory without it is an incomplete run. If the destination already holds
+results the run stops before loading data and writes nothing; `--overwrite` replaces
+them (and still refuses to mix files from clients outside the run). `--temporal` is
+rejected: no client history exists.
 
-## Extraction and storage
+## Audit
 
-Feature extraction uses evaluation mode and `torch.no_grad()`. Images are
-processed sequentially in batches, and non-finite embeddings raise an
-explicit `FloatingPointError`. Each client is saved independently under:
+`python audit_phase4.py` (read-only; Colab defaults) checks paths, hashes, strict state
+dict compatibility, 9 classes / 128-d shapes, status labels, provenance wording, and that
+the run is not reported as final or as client-local.
 
-```text
-results/phase4/prototypes/client_<id>.pt
-```
+## Downstream note
 
-Each file contains the client ID, class-to-prototype tensors, sample counts,
-embedding dimensions, prototype norms, and representation description.
-`results/phase4/summary.json` contains measured run totals.
-
-Two explicit execution modes are supported:
-
-* Smoke mode (`python run_phase4.py`) processes available local states and
-  explicitly reports global-checkpoint fallback for missing clients. It is
-  CPU-friendly and does not run the 200-round experiment.
-* Final mode (`python run_phase4.py --final`) rejects missing or mismatched
-  local states and never falls back to the global checkpoint. It is ready only
-  when all 50 clients have actual local states.
-
-The current smoke artifacts are therefore not final research results:
-10 local states and 40 global fallbacks were available from the one-round
-Phase 3 smoke run. A full Phase 3 execution must be run separately to produce
-the required 50 local states.
-
-## Memory strategy and isolation
-
-Clients are processed sequentially. No optimizer is created, embeddings are
-detached to CPU, and no client model collection is retained. The Phase 4
-runner uses only Phase 2 training subsets and does not access the PathMNIST
-test dataset.
-
-## Scope boundary
-
-```text
-Phase 4 = Prototype Generation
-Phase 5 = Prototype Reliability Score (PRS) — implemented separately
-Phase 6 = PRAM/PRAA adaptive aggregation — not implemented
-Phase 7 = PRAA — not implemented
-Phase 8 = Final Evaluation — not implemented
-```
+Phase 5 final mode and the Phase 6 numeric-PRS gate currently require a Phase 4 run in
+mode `final`. Global-model prototypes are intentionally not that, so Phase 5 `--smoke`
+(512 validation samples) is the only runnable Phase 5 mode until that policy is revisited.

@@ -1,0 +1,21 @@
+{
+  "num_clients": 50,
+  "clients_per_round": 10,
+  "num_rounds": 200,
+  "local_epochs": 2,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0,
+  "patch_size": 4,
+  "mask_ratio": 0.8,
+  "embedding_dim": 128,
+  "num_classes": 9,
+  "mae_weight": 0.7,
+  "mae_reference": 1.0,
+  "proto_reference": 1.0,
+  "scheduler_factor": 0.1,
+  "scheduler_patience": 5,
+  "seed": 42,
+  "label_fraction": 0.01,
+  "max_batches": null
+}

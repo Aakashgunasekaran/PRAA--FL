@@ -1,0 +1,144 @@
+============================================================
+PRAA-FL - Phase 1 Data Preprocessing
+============================================================
+Random Seed        : 42
+
+Dataset Information
+------------------------------------------------------------
+Training Images    : 3000
+Validation Images  : 500
+Testing Images     : 500
+Number of Classes  : 9
+
+DataLoader Information
+------------------------------------------------------------
+Training batches   : 47
+Validation batches : 8
+Testing batches    : 8
+
+Batch Shape
+------------------------------------------------------------
+Images : torch.Size([64, 3, 28, 28])
+Labels : torch.Size([64, 1])
+
+Data Types
+------------------------------------------------------------
+Image dtype : torch.float32
+Label dtype : torch.int64
+
+Value Check
+------------------------------------------------------------
+Images contain NaN : False
+Images contain Inf : False
+
+============================================================
+Phase 1 preprocessing completed successfully.
+============================================================
+
+======================================================================
+PRAA-FL pipeline | profile=smoke | device=cpu | synthetic_data=True
+======================================================================
+NOTE: synthetic PathMNIST-shaped data. Results below are NOT PathMNIST results.
+clients=10 per_round=5 rounds=6 encoder=small_cnn local_epochs=1 tau=1.0 policy=strict
+
+======================================================================
+Phases 1-2: data and client partition
+======================================================================
+partition checks: {'sum_counts': True, 'unique_assigned_count': True, 'no_missing': True, 'indices_in_range': True, 'no_duplicates': True}
+
+======================================================================
+Phases 3-7: training FEDAVG
+======================================================================
+[fedavg] round 1/6 val_acc=0.1100 lr=1.00e-03 0.2s
+[fedavg] round 2/6 val_acc=0.1100 lr=1.00e-03 0.2s
+[fedavg] round 3/6 val_acc=0.1100 lr=1.00e-03 0.2s
+[fedavg] round 4/6 val_acc=0.1100 lr=1.00e-03 0.2s
+[fedavg] round 5/6 val_acc=0.1100 lr=1.00e-03 0.2s
+[fedavg] round 6/6 val_acc=0.1100 lr=1.00e-03 0.1s
+fedavg finished in 0.0 min
+
+======================================================================
+Phases 3-7: training FLAME
+======================================================================
+[flame] round 1/6 val_acc=0.8633 lr=1.00e-03 5.7s
+[flame] round 2/6 val_acc=0.9200 lr=1.00e-03 4.1s
+[flame] round 3/6 val_acc=0.8800 lr=1.00e-03 4.9s
+[flame] round 4/6 val_acc=0.8933 lr=1.00e-03 5.5s
+[flame] round 5/6 val_acc=0.9100 lr=1.00e-03 4.1s
+[flame] round 6/6 val_acc=0.9300 lr=1.00e-03 6.4s
+flame finished in 0.5 min
+
+======================================================================
+Phases 3-7: training PRAA
+======================================================================
+[praa] round 1/6 val_acc=0.8633 lr=1.00e-03 5.0s
+[praa] round 2/6 val_acc=0.9200 lr=1.00e-03 4.4s
+[praa] round 3/6 val_acc=0.8800 lr=1.00e-03 4.8s
+[praa] round 4/6 val_acc=0.8933 lr=1.00e-03 5.5s
+[praa] round 5/6 val_acc=0.9133 lr=1.00e-03 4.1s
+[praa] round 6/6 val_acc=0.9267 lr=1.00e-03 6.0s
+praa finished in 0.5 min
+
+======================================================================
+Phase 6: PRS of the preserved Phase 3 evidence (read-only)
+======================================================================
+skipped (synthetic profile or no pram.json)
+
+======================================================================
+Phase 8: evaluation on the VAL split
+======================================================================
+fedavg  {'accuracy': 0.11, 'balanced_accuracy': 0.1111, 'macro_f1': 0.022, 'auroc_macro_ovr': 0.7656, 'nll': 2.2016}
+flame   {'accuracy': 0.93, 'balanced_accuracy': 0.9299, 'macro_f1': 0.9297, 'auroc_macro_ovr': 0.9971, 'nll': 0.2097}
+praa    {'accuracy': 0.932, 'balanced_accuracy': 0.932, 'macro_f1': 0.9318, 'auroc_macro_ovr': 0.9971, 'nll': 0.2142}
+# Phase 8 comparison (val split)
+
+**SYNTHETIC DATA (PathMNIST-shaped) - smoke test only; not PathMNIST results.**
+
+| Method | Rule | Accuracy | Balanced acc. | Macro-F1 | AUROC (macro OvR) |
+|---|---|---|---|---|---|
+| FEDAVG | classifier_head | 0.1100 | 0.1111 | 0.0220 | 0.7656 |
+| FLAME | flame_rule | 0.9300 | 0.9299 | 0.9297 | 0.9971 |
+| FLAME [praa_rule] | praa_rule | 0.9280 | 0.9279 | 0.9276 | 0.9971 |
+| PRAA | praa_rule | 0.9320 | 0.9320 | 0.9318 | 0.9971 |
+| PRAA [flame_rule] | flame_rule | 0.9300 | 0.9299 | 0.9298 | 0.9971 |
+
+## Convergence (validation accuracy per round)
+
+| Method | final | mean last 10 | best (round) | mean over rounds | rounds to 0.5/0.6/0.7/0.8 |
+|---|---|---|---|---|---|
+| FEDAVG | 0.1100 | 0.1100 | 0.1100 (1) | 0.1100 | None / None / None / None |
+| FLAME | 0.9300 | 0.8994 | 0.9300 (6) | 0.8994 | 1 / 1 / 1 / 1 |
+| PRAA | 0.9267 | 0.8994 | 0.9267 (6) | 0.8994 | 1 / 1 / 1 / 1 |
+
+
+======================================================================
+Phase 8: evaluation on the TEST split
+======================================================================
+fedavg  {'accuracy': 0.11, 'balanced_accuracy': 0.1111, 'macro_f1': 0.022, 'auroc_macro_ovr': 0.7704, 'nll': 2.2015}
+flame   {'accuracy': 0.938, 'balanced_accuracy': 0.938, 'macro_f1': 0.9379, 'auroc_macro_ovr': 0.9971, 'nll': 0.2132}
+praa    {'accuracy': 0.94, 'balanced_accuracy': 0.94, 'macro_f1': 0.9399, 'auroc_macro_ovr': 0.9971, 'nll': 0.2174}
+# Phase 8 comparison (test split)
+
+**SYNTHETIC DATA (PathMNIST-shaped) - smoke test only; not PathMNIST results.**
+
+| Method | Rule | Accuracy | Balanced acc. | Macro-F1 | AUROC (macro OvR) |
+|---|---|---|---|---|---|
+| FEDAVG | classifier_head | 0.1100 | 0.1111 | 0.0220 | 0.7704 |
+| FLAME | flame_rule | 0.9380 | 0.9380 | 0.9379 | 0.9971 |
+| FLAME [praa_rule] | praa_rule | 0.9380 | 0.9380 | 0.9379 | 0.9971 |
+| PRAA | praa_rule | 0.9400 | 0.9400 | 0.9399 | 0.9971 |
+| PRAA [flame_rule] | flame_rule | 0.9420 | 0.9420 | 0.9419 | 0.9971 |
+
+## Convergence (validation accuracy per round)
+
+| Method | final | mean last 10 | best (round) | mean over rounds | rounds to 0.5/0.6/0.7/0.8 |
+|---|---|---|---|---|---|
+| FEDAVG | 0.1100 | 0.1100 | 0.1100 (1) | 0.1100 | None / None / None / None |
+| FLAME | 0.9300 | 0.8994 | 0.9300 (6) | 0.8994 | 1 / 1 / 1 / 1 |
+| PRAA | 0.9267 | 0.8994 | 0.9267 (6) | 0.8994 | 1 / 1 / 1 / 1 |
+
+
+======================================================================
+PIPELINE COMPLETE (SYNTHETIC SMOKE - not PathMNIST)
+======================================================================
+outputs: /home/claude/PRAA-FL/results/smoke_e2e

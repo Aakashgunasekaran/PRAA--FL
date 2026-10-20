@@ -1,0 +1,6 @@
+# Extra packages for the web app (run_app.py). Install together with requirements.txt:
+#   pip install -r requirements.txt -r requirements-app.txt
+fastapi>=0.110
+uvicorn[standard]>=0.27
+python-multipart>=0.0.9
+httpx   # only for tests/test_app.py (FastAPI TestClient)

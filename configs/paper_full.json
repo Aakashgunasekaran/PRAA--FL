@@ -1,0 +1,4 @@
+{
+  "_comment": "Paper / Phase 3 hyper-parameters + PRAA defaults (documented formulas; tau=1). ResNet-50, 50 clients, 10 per round, 200 rounds, 1% labels. ~7-14 h per FLAME/PRAA run on a T4 (estimate_compute.py).",
+  "method": "praa"
+}

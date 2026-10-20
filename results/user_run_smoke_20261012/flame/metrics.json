@@ -1,0 +1,704 @@
+[
+  {
+    "round": 1,
+    "selected_clients": [
+      0,
+      2,
+      3,
+      4,
+      7
+    ],
+    "client_metrics": [
+      {
+        "client_id": 0,
+        "mae_loss": 0.12094649579375982,
+        "proto_loss": 0.6804755795837991,
+        "combined_loss": 0.2888052286580205,
+        "steps": 16
+      },
+      {
+        "client_id": 2,
+        "mae_loss": 0.14662049760421117,
+        "proto_loss": 0.6475580246672811,
+        "combined_loss": 0.29690176049868267,
+        "steps": 15
+      },
+      {
+        "client_id": 3,
+        "mae_loss": 0.15487710237503052,
+        "proto_loss": 1.153192213177681,
+        "combined_loss": 0.45437164306640626,
+        "steps": 10
+      },
+      {
+        "client_id": 4,
+        "mae_loss": 0.14704973664548662,
+        "proto_loss": 1.2229074603981442,
+        "combined_loss": 0.46980706850687665,
+        "steps": 9
+      },
+      {
+        "client_id": 7,
+        "mae_loss": 0.20316241681575775,
+        "proto_loss": 1.9877996444702148,
+        "combined_loss": 0.7385536432266235,
+        "steps": 1
+      }
+    ],
+    "weights": {
+      "used": "flame",
+      "flame": {
+        "0": 0.3182926829268293,
+        "2": 0.2890243902439024,
+        "3": 0.20365853658536584,
+        "4": 0.16951219512195123,
+        "7": 0.01951219512195122
+      },
+      "praa": {
+        "0": 0.3182926829268293,
+        "2": 0.2890243902439024,
+        "3": 0.20365853658536584,
+        "4": 0.16951219512195123,
+        "7": 0.01951219512195122
+      },
+      "multipliers": {
+        "0": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0,
+        "7": 1.0
+      },
+      "reliability": {
+        "0": null,
+        "2": null,
+        "3": null,
+        "4": null,
+        "7": null
+      },
+      "num_assessed": 0,
+      "reweighting_applied": false,
+      "max_weight_shift": 0.0
+    },
+    "validation": {
+      "flame_rule": {
+        "accuracy": 0.8633333333333333,
+        "balanced_accuracy": 0.8672121319180142,
+        "macro_f1": 0.8676267497603762,
+        "auroc_macro_ovr": 0.9101826559538954,
+        "nll": 1.3513715819786025,
+        "missing_prototype_classes": []
+      },
+      "praa_rule": {
+        "accuracy": 0.8633333333333333,
+        "balanced_accuracy": 0.8672121319180142,
+        "macro_f1": 0.8676267497603762,
+        "auroc_macro_ovr": 0.9101826559538954,
+        "nll": 1.3513715819786025,
+        "missing_prototype_classes": []
+      },
+      "reliability": {
+        "records": 33,
+        "records_with_prs": 0,
+        "records_unavailable": 33,
+        "classes_reweighted": 0,
+        "mean_prs": null,
+        "prs_status_counts": {
+          "complete": 0,
+          "partial": 0,
+          "unavailable": 33
+        }
+      }
+    },
+    "validation_loss": 1.3513715819786025,
+    "validation_accuracy": 0.8633333333333333,
+    "validation_macro_f1": 0.8676267497603762,
+    "validation_auroc": 0.9101826559538954,
+    "learning_rate": 0.001,
+    "elapsed_sec": 61.845
+  },
+  {
+    "round": 2,
+    "selected_clients": [
+      1,
+      3,
+      6,
+      7,
+      8
+    ],
+    "client_metrics": [
+      {
+        "client_id": 1,
+        "mae_loss": 0.1287249798576037,
+        "proto_loss": 0.24189215215543905,
+        "combined_loss": 0.16267513359586397,
+        "steps": 6
+      },
+      {
+        "client_id": 3,
+        "mae_loss": 0.14259228184819223,
+        "proto_loss": 0.079124403807009,
+        "combined_loss": 0.12355192005634308,
+        "steps": 10
+      },
+      {
+        "client_id": 6,
+        "mae_loss": 0.14695954535688674,
+        "proto_loss": 0.0026236014671375024,
+        "combined_loss": 0.10365875916821617,
+        "steps": 7
+      },
+      {
+        "client_id": 7,
+        "mae_loss": 0.17074471712112427,
+        "proto_loss": 6.6756979322235566e-06,
+        "combined_loss": 0.1195233017206192,
+        "steps": 1
+      },
+      {
+        "client_id": 8,
+        "mae_loss": 0.13920539965232212,
+        "proto_loss": 0.22644351895432918,
+        "combined_loss": 0.16537683606147766,
+        "steps": 15
+      }
+    ],
+    "weights": {
+      "used": "flame",
+      "flame": {
+        "1": 0.14331210191082802,
+        "3": 0.2659235668789809,
+        "6": 0.16560509554140126,
+        "7": 0.025477707006369428,
+        "8": 0.3996815286624204
+      },
+      "praa": {
+        "1": 0.14331210191082802,
+        "3": 0.2659235668789809,
+        "6": 0.16560509554140126,
+        "7": 0.025477707006369428,
+        "8": 0.3996815286624204
+      },
+      "multipliers": {
+        "1": 1.0,
+        "3": 1.0,
+        "6": 1.0,
+        "7": 1.0,
+        "8": 1.0
+      },
+      "reliability": {
+        "1": null,
+        "3": 0.9794773631625705,
+        "6": null,
+        "7": null,
+        "8": null
+      },
+      "num_assessed": 1,
+      "reweighting_applied": false,
+      "max_weight_shift": 0.0
+    },
+    "validation": {
+      "flame_rule": {
+        "accuracy": 0.92,
+        "balanced_accuracy": 0.9199797582150523,
+        "macro_f1": 0.9198741785557955,
+        "auroc_macro_ovr": 0.9922690493091709,
+        "nll": 0.42315085561845917,
+        "missing_prototype_classes": []
+      },
+      "praa_rule": {
+        "accuracy": 0.92,
+        "balanced_accuracy": 0.9199797582150523,
+        "macro_f1": 0.9198741785557955,
+        "auroc_macro_ovr": 0.9922690493091709,
+        "nll": 0.42315085561845917,
+        "missing_prototype_classes": []
+      },
+      "reliability": {
+        "records": 33,
+        "records_with_prs": 5,
+        "records_unavailable": 28,
+        "classes_reweighted": 0,
+        "mean_prs": 0.9828666190908413,
+        "prs_status_counts": {
+          "complete": 5,
+          "partial": 0,
+          "unavailable": 28
+        }
+      }
+    },
+    "validation_loss": 0.42315085561845917,
+    "validation_accuracy": 0.92,
+    "validation_macro_f1": 0.9198741785557955,
+    "validation_auroc": 0.9922690493091709,
+    "learning_rate": 0.001,
+    "elapsed_sec": 46.836
+  },
+  {
+    "round": 3,
+    "selected_clients": [
+      0,
+      2,
+      4,
+      6,
+      7
+    ],
+    "client_metrics": [
+      {
+        "client_id": 0,
+        "mae_loss": 0.110775385517627,
+        "proto_loss": 0.00011626112659279819,
+        "combined_loss": 0.07757764775305986,
+        "steps": 16
+      },
+      {
+        "client_id": 2,
+        "mae_loss": 0.09572456330060959,
+        "proto_loss": 0.0,
+        "combined_loss": 0.06700719346602758,
+        "steps": 15
+      },
+      {
+        "client_id": 4,
+        "mae_loss": 0.11920775804254743,
+        "proto_loss": 6.380725249736467e-05,
+        "combined_loss": 0.08346457365486357,
+        "steps": 9
+      },
+      {
+        "client_id": 6,
+        "mae_loss": 0.14116114377975464,
+        "proto_loss": 2.574890162674949e-06,
+        "combined_loss": 0.09881357103586197,
+        "steps": 7
+      },
+      {
+        "client_id": 7,
+        "mae_loss": 0.1427062302827835,
+        "proto_loss": 0.0,
+        "combined_loss": 0.09989435970783234,
+        "steps": 1
+      }
+    ],
+    "weights": {
+      "used": "flame",
+      "flame": {
+        "0": 0.34478203434610305,
+        "2": 0.3130779392338177,
+        "4": 0.18361955085865259,
+        "6": 0.13738441215323646,
+        "7": 0.021136063408190225
+      },
+      "praa": {
+        "0": 0.34630717384512383,
+        "2": 0.3129541009737101,
+        "4": 0.18114854847004191,
+        "6": 0.13846247369180184,
+        "7": 0.0211277030193222
+      },
+      "multipliers": {
+        "0": 1.00482094671992,
+        "2": 1.0,
+        "4": 0.9869331966421647,
+        "6": 1.008245856637915,
+        "7": 1.0
+      },
+      "reliability": {
+        "0": 0.994359572728475,
+        "2": null,
+        "4": 0.9766580552765817,
+        "6": 0.9977488252851698,
+        "7": null
+      },
+      "num_assessed": 3,
+      "reweighting_applied": true,
+      "max_weight_shift": 0.0024710023886106713
+    },
+    "validation": {
+      "flame_rule": {
+        "accuracy": 0.88,
+        "balanced_accuracy": 0.8843919821149423,
+        "macro_f1": 0.8822019801186467,
+        "auroc_macro_ovr": 0.9823843104359737,
+        "nll": 0.499398434442968,
+        "missing_prototype_classes": []
+      },
+      "praa_rule": {
+        "accuracy": 0.88,
+        "balanced_accuracy": 0.8843919821149423,
+        "macro_f1": 0.8822019801186467,
+        "auroc_macro_ovr": 0.9823843104359737,
+        "nll": 0.4994207962749362,
+        "missing_prototype_classes": []
+      },
+      "reliability": {
+        "records": 33,
+        "records_with_prs": 16,
+        "records_unavailable": 17,
+        "classes_reweighted": 4,
+        "mean_prs": 0.9882564637998137,
+        "prs_status_counts": {
+          "complete": 16,
+          "partial": 0,
+          "unavailable": 17
+        }
+      }
+    },
+    "validation_loss": 0.499398434442968,
+    "validation_accuracy": 0.88,
+    "validation_macro_f1": 0.8822019801186467,
+    "validation_auroc": 0.9823843104359737,
+    "learning_rate": 0.001,
+    "elapsed_sec": 60.128
+  },
+  {
+    "round": 4,
+    "selected_clients": [
+      0,
+      1,
+      4,
+      6,
+      8
+    ],
+    "client_metrics": [
+      {
+        "client_id": 0,
+        "mae_loss": 0.09825443802401423,
+        "proto_loss": 2.1287369644795717e-09,
+        "combined_loss": 0.06877810601145029,
+        "steps": 16
+      },
+      {
+        "client_id": 1,
+        "mae_loss": 0.11891890813906987,
+        "proto_loss": 0.050232533646370335,
+        "combined_loss": 0.09831299508611362,
+        "steps": 6
+      },
+      {
+        "client_id": 4,
+        "mae_loss": 0.11214843640724818,
+        "proto_loss": 0.00020640296012667628,
+        "combined_loss": 0.07856582519080904,
+        "steps": 9
+      },
+      {
+        "client_id": 6,
+        "mae_loss": 0.12528188526630402,
+        "proto_loss": 5.197305914147624e-06,
+        "combined_loss": 0.08769887792212623,
+        "steps": 7
+      },
+      {
+        "client_id": 8,
+        "mae_loss": 0.09959042221307754,
+        "proto_loss": 0.047620482491984244,
+        "combined_loss": 0.08399943908055624,
+        "steps": 15
+      }
+    ],
+    "weights": {
+      "used": "flame",
+      "flame": {
+        "0": 0.3088757396449704,
+        "1": 0.10650887573964497,
+        "4": 0.16449704142011834,
+        "6": 0.12307692307692308,
+        "8": 0.29704142011834317
+      },
+      "praa": {
+        "0": 0.31321659794850887,
+        "1": 0.09786754210998123,
+        "4": 0.1678358188899435,
+        "6": 0.12682208987298402,
+        "8": 0.29425795117858244
+      },
+      "multipliers": {
+        "0": 1.0192976279215882,
+        "1": 0.9236191412336847,
+        "4": 1.0255730605559603,
+        "6": 1.0357580539993212,
+        "8": 0.9957521162894459
+      },
+      "reliability": {
+        "0": 0.9817943634131014,
+        "1": 0.8896361984602194,
+        "4": 0.9878389025345826,
+        "6": 0.9976491570472718,
+        "8": 0.9591151674934055
+      },
+      "num_assessed": 5,
+      "reweighting_applied": true,
+      "max_weight_shift": 0.008641333629663739
+    },
+    "validation": {
+      "flame_rule": {
+        "accuracy": 0.8866666666666667,
+        "balanced_accuracy": 0.889733359372828,
+        "macro_f1": 0.8883491411112756,
+        "auroc_macro_ovr": 0.9927944633620702,
+        "nll": 0.3298730649880788,
+        "missing_prototype_classes": []
+      },
+      "praa_rule": {
+        "accuracy": 0.8866666666666667,
+        "balanced_accuracy": 0.889733359372828,
+        "macro_f1": 0.888402608770377,
+        "auroc_macro_ovr": 0.9927063001553156,
+        "nll": 0.3317741707943513,
+        "missing_prototype_classes": []
+      },
+      "reliability": {
+        "records": 33,
+        "records_with_prs": 24,
+        "records_unavailable": 9,
+        "classes_reweighted": 8,
+        "mean_prs": 0.9720693446131984,
+        "prs_status_counts": {
+          "complete": 24,
+          "partial": 0,
+          "unavailable": 9
+        }
+      }
+    },
+    "validation_loss": 0.3298730649880788,
+    "validation_accuracy": 0.8866666666666667,
+    "validation_macro_f1": 0.8883491411112756,
+    "validation_auroc": 0.9927944633620702,
+    "learning_rate": 0.001,
+    "elapsed_sec": 62.901
+  },
+  {
+    "round": 5,
+    "selected_clients": [
+      1,
+      3,
+      4,
+      5,
+      6
+    ],
+    "client_metrics": [
+      {
+        "client_id": 1,
+        "mae_loss": 0.107521191239357,
+        "proto_loss": 9.340526443679664e-05,
+        "combined_loss": 0.07529285550117493,
+        "steps": 6
+      },
+      {
+        "client_id": 3,
+        "mae_loss": 0.1191787727177143,
+        "proto_loss": 0.00014024949868840508,
+        "combined_loss": 0.08346721380949021,
+        "steps": 10
+      },
+      {
+        "client_id": 4,
+        "mae_loss": 0.11528570039404763,
+        "proto_loss": 1.1353261836827894e-08,
+        "combined_loss": 0.08069999267657597,
+        "steps": 9
+      },
+      {
+        "client_id": 5,
+        "mae_loss": 0.12021683529019356,
+        "proto_loss": 0.010956513602829432,
+        "combined_loss": 0.08743873760104179,
+        "steps": 10
+      },
+      {
+        "client_id": 6,
+        "mae_loss": 0.1210322795169694,
+        "proto_loss": 0.0,
+        "combined_loss": 0.08472259449107307,
+        "steps": 7
+      }
+    ],
+    "weights": {
+      "used": "flame",
+      "flame": {
+        "1": 0.13533834586466165,
+        "3": 0.2511278195488722,
+        "4": 0.20902255639097744,
+        "5": 0.24812030075187969,
+        "6": 0.15639097744360902
+      },
+      "praa": {
+        "1": 0.13205420928481912,
+        "3": 0.25075773745445296,
+        "4": 0.21128357104931728,
+        "5": 0.24785318417739996,
+        "6": 0.15805129803401086
+      },
+      "multipliers": {
+        "1": 0.9767854485805328,
+        "3": 0.9996024525592628,
+        "4": 1.0119064632870096,
+        "5": 1.0,
+        "6": 1.0117056355731944
+      },
+      "reliability": {
+        "1": 0.9642963623335076,
+        "3": 0.9868216302600644,
+        "4": 0.9989683230717976,
+        "5": null,
+        "6": 0.9987700631221135
+      },
+      "num_assessed": 4,
+      "reweighting_applied": true,
+      "max_weight_shift": 0.003284136579842528
+    },
+    "validation": {
+      "flame_rule": {
+        "accuracy": 0.9066666666666666,
+        "balanced_accuracy": 0.9094246048705252,
+        "macro_f1": 0.9079750572613643,
+        "auroc_macro_ovr": 0.9946505322423107,
+        "nll": 0.2772762344916168,
+        "missing_prototype_classes": []
+      },
+      "praa_rule": {
+        "accuracy": 0.9066666666666666,
+        "balanced_accuracy": 0.9094246048705252,
+        "macro_f1": 0.9079750572613643,
+        "auroc_macro_ovr": 0.9945258370710547,
+        "nll": 0.2789974295319822,
+        "missing_prototype_classes": []
+      },
+      "reliability": {
+        "records": 33,
+        "records_with_prs": 24,
+        "records_unavailable": 9,
+        "classes_reweighted": 8,
+        "mean_prs": 0.9763547995006748,
+        "prs_status_counts": {
+          "complete": 24,
+          "partial": 0,
+          "unavailable": 9
+        }
+      }
+    },
+    "validation_loss": 0.2772762344916168,
+    "validation_accuracy": 0.9066666666666666,
+    "validation_macro_f1": 0.9079750572613643,
+    "validation_auroc": 0.9946505322423107,
+    "learning_rate": 0.001,
+    "elapsed_sec": 55.175
+  },
+  {
+    "round": 6,
+    "selected_clients": [
+      2,
+      4,
+      5,
+      8,
+      9
+    ],
+    "client_metrics": [
+      {
+        "client_id": 2,
+        "mae_loss": 0.09853777537743251,
+        "proto_loss": 0.0,
+        "combined_loss": 0.0689764420191447,
+        "steps": 15
+      },
+      {
+        "client_id": 4,
+        "mae_loss": 0.1071566210852729,
+        "proto_loss": 9.76374833625313e-07,
+        "combined_loss": 0.07500992632574505,
+        "steps": 9
+      },
+      {
+        "client_id": 5,
+        "mae_loss": 0.10503806620836258,
+        "proto_loss": 8.019463195108045e-05,
+        "combined_loss": 0.0735507033765316,
+        "steps": 10
+      },
+      {
+        "client_id": 8,
+        "mae_loss": 0.09831362217664719,
+        "proto_loss": 0.013962021569186097,
+        "combined_loss": 0.07300813967982928,
+        "steps": 15
+      },
+      {
+        "client_id": 9,
+        "mae_loss": 0.11002329885959625,
+        "proto_loss": 0.0,
+        "combined_loss": 0.07701630741357804,
+        "steps": 5
+      }
+    ],
+    "weights": {
+      "used": "flame",
+      "flame": {
+        "2": 0.27494199535962877,
+        "4": 0.16125290023201855,
+        "5": 0.191415313225058,
+        "8": 0.29118329466357307,
+        "9": 0.08120649651972157
+      },
+      "praa": {
+        "2": 0.28037439736051434,
+        "4": 0.1647078990158542,
+        "5": 0.19521664567610916,
+        "8": 0.2781630660746821,
+        "9": 0.08153799187284011
+      },
+      "multipliers": {
+        "2": 1.01561249593882,
+        "4": 1.017273323264755,
+        "5": 1.0157128120504224,
+        "8": 0.9514013687460026,
+        "9": 1.0
+      },
+      "reliability": {
+        "2": 0.9975497791732566,
+        "4": 0.9991810686058468,
+        "5": 0.9976483111580212,
+        "8": 0.9344806499455286,
+        "9": null
+      },
+      "num_assessed": 4,
+      "reweighting_applied": true,
+      "max_weight_shift": 0.013020228588890959
+    },
+    "validation": {
+      "flame_rule": {
+        "accuracy": 0.93,
+        "balanced_accuracy": 0.932527058713017,
+        "macro_f1": 0.9313990132802749,
+        "auroc_macro_ovr": 0.9967540469249623,
+        "nll": 0.2207031279897138,
+        "missing_prototype_classes": []
+      },
+      "praa_rule": {
+        "accuracy": 0.93,
+        "balanced_accuracy": 0.932527058713017,
+        "macro_f1": 0.9313990132802749,
+        "auroc_macro_ovr": 0.9967056645177197,
+        "nll": 0.22169427507432432,
+        "missing_prototype_classes": []
+      },
+      "reliability": {
+        "records": 33,
+        "records_with_prs": 28,
+        "records_unavailable": 5,
+        "classes_reweighted": 8,
+        "mean_prs": 0.9838232598280624,
+        "prs_status_counts": {
+          "complete": 28,
+          "partial": 0,
+          "unavailable": 5
+        }
+      }
+    },
+    "validation_loss": 0.2207031279897138,
+    "validation_accuracy": 0.93,
+    "validation_macro_f1": 0.9313990132802749,
+    "validation_auroc": 0.9967540469249623,
+    "learning_rate": 0.001,
+    "elapsed_sec": 72.825
+  }
+]

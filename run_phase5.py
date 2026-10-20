@@ -1,292 +1,272 @@
-"""Phase 5 mentor runner: Prototype Reliability Assessment Module."""
+"""Phase 5 mentor demo: Prototype Reliability Assessment Module (PRAM).
+
+Reads the frozen Phase 3 model and the Phase 4 prototype files (read-only) and
+writes per-(client, class) validation, consistency, and stability components.
+Components that cannot be computed are reported as `unavailable` - never as 0 or 1.
+It does not compute PRS or perform aggregation (Phase 6+).
+
+    python run_phase5.py --phase3-dir /content/drive/MyDrive/phase3 \
+        --phase4-dir /content/drive/MyDrive/phase4 \
+        --output-dir /content/drive/MyDrive/phase5
+    python run_phase5.py --smoke ...        # 512 validation samples -> results/phase5_smoke
+"""
 
 import argparse
 import contextlib
 import io
 import json
-import time
 from pathlib import Path
 
 import torch
-from torch.utils.data import DataLoader
 
-from federated.prs import (
-    PRSConfig,
-    compute_prs,
-    consistency_scores,
-    stability_scores,
-    validation_embeddings,
-    validation_scores,
-    validation_scores_from_embeddings,
+from federated import flame_config as cfg
+from federated.pram import (
+    COMPONENTS,
+    FORMULA_VERSION,
+    FORMULAS,
+    SCHEMA_VERSION,
+    assess_client,
+    build_reference_prototypes,
+    discover_client_snapshots,
+    inspect_training_history,
+    phase6_readiness,
+    summarize,
+    write_json_atomic,
 )
+from run_phase4 import expected_phase3_config
+from training.prototype_store import (
+    load_client_prototype_file,
+    sha256_file,
+    validate_phase3_artifacts,
+)
+from training.prototypes import extract_features
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+PHASE3_PATH = PROJECT_ROOT / "results" / "phase3"
+PHASE4_PATH = PROJECT_ROOT / "results" / "phase4"
+OUTPUT_PATH = PROJECT_ROOT / "results" / "phase5"
+SMOKE_OUTPUT_PATH = PROJECT_ROOT / "results" / "phase5_smoke"
+SMOKE_VALIDATION_SAMPLES = 512
+EXPECTED_VALIDATION_SAMPLES = 10_004
 
 
-ROOT = Path(__file__).resolve().parent
-PHASE3 = ROOT / "results" / "phase3"
-PHASE4 = ROOT / "results" / "phase4"
-OUTPUT = ROOT / "results" / "phase5"
+def assert_validation_split(dataset) -> None:
+    """Allow only the validation split; the held-out test split is never permitted."""
+    base = dataset
+    while hasattr(base, "dataset") and hasattr(base, "indices"):
+        base = base.dataset
+    split = getattr(base, "split", None)
+    if split is not None and str(split) != "val":
+        raise PermissionError(f"Phase 5 may only read the validation split; got split={split!r}")
 
 
-def main(max_validation_samples=None):
-    initialization_started = time.perf_counter()
-    phase4_summary = json.loads((PHASE4 / "summary.json").read_text())
-    config = json.loads((PHASE3 / "config.json").read_text())
-    with contextlib.redirect_stdout(io.StringIO()):
-        from datasets import preprocess
-        from models.classifier import FLAMEModel
-        from run_phase4 import load_client_state
+def load_phase4_records(phase4_dir):
+    """Load and cross-check every Phase 4 prototype file (read-only)."""
+    phase4_dir = Path(phase4_dir)
+    summary_path = phase4_dir / "summary.json"
+    if not summary_path.exists():
+        raise FileNotFoundError(f"Missing Phase 4 summary: {summary_path}")
+    summary = json.loads(summary_path.read_text())
+    paths = sorted((phase4_dir / "prototypes").glob("client_*.pt"),
+                   key=lambda p: int(p.stem.split("_")[1]))
+    if not paths:
+        raise FileNotFoundError(f"No Phase 4 prototype files under {phase4_dir / 'prototypes'}")
+    records = {}
+    for path in paths:
+        record = load_client_prototype_file(path)  # rejects legacy/non-schema files
+        records[int(record["client_id"])] = record
+    if summary.get("clients_processed") != len(records):
+        raise ValueError("Phase 4 summary.clients_processed disagrees with prototype files")
+    for key in ("source_model_sha256", "source_round", "partition_sha256"):
+        values = {r["provenance"][key] for r in records.values()}
+        if len(values) != 1:
+            raise ValueError(f"Phase 4 records disagree on provenance.{key}: {sorted(map(str, values))}")
+    modes = {r["config"]["mode"] for r in records.values()}
+    if len(modes) != 1:
+        raise ValueError(f"Phase 4 records mix modes: {sorted(modes)}")
+    return records, summary, {p.name: sha256_file(p) for p in paths}, sha256_file(summary_path)
+
+
+def run_pram(
+    phase3_dir,
+    phase4_dir,
+    output_dir,
+    validation_dataset,
+    *,
+    mode="final",
+    device="cpu",
+    overwrite=False,
+    max_validation_samples=None,
+):
+    """Compute PRAM components and write ``pram.json``; return the document."""
+    from models.classifier import FLAMEModel
+
+    if mode not in ("final", "smoke", "exploratory"):
+        raise ValueError("mode must be final, smoke, or exploratory")
+    assert_validation_split(validation_dataset)
+    records, phase4_summary, file_hashes, summary_hash = load_phase4_records(phase4_dir)
+    phase4_mode = next(iter(records.values()))["config"]["mode"]
+    first_provenance = next(iter(records.values()))["provenance"]
+    round_id = int(first_provenance["source_round"])
+    if mode == "final":
+        if phase4_mode != "final" or sorted(records) != list(range(cfg.NUM_CLIENTS)):
+            raise ValueError("final mode needs a final-mode Phase 4 run covering all 50 clients")
+        if max_validation_samples is not None:
+            raise ValueError("final mode must use the complete validation split")
+    elif mode == "exploratory":
+        if phase4_mode != "global_model_prototypes" or sorted(records) != list(range(cfg.NUM_CLIENTS)):
+            raise ValueError("exploratory mode requires global-model prototypes for all 50 clients")
+        if max_validation_samples is not None:
+            raise ValueError("exploratory mode must use the complete validation split")
+
+    source = validate_phase3_artifacts(
+        phase3_dir, expected_phase3_config(),
+        require_rounds=round_id if mode in ("final", "exploratory") else None,
+    )
+    if source["provenance"]["source_model_sha256"] != first_provenance["source_model_sha256"]:
+        raise ValueError("Phase 4 prototypes were not generated from this Phase 3 final_model.pt")
+    if source["provenance"]["source_round"] != round_id:
+        raise ValueError("Phase 4 source round differs from Phase 3 final round")
+    config = source["config"]
+    history = torch.load(Path(phase3_dir) / "final_model.pt", map_location="cpu",
+                         weights_only=False)["history"]
+
+    model = FLAMEModel(embedding_dim=config["embedding_dim"], num_classes=config["num_classes"])
+    model.load_state_dict(source["state_dict"], strict=True)
+    model.to(device).eval()
+    dataset = validation_dataset
+    if max_validation_samples is not None:
+        dataset = torch.utils.data.Subset(dataset, range(min(len(dataset), max_validation_samples)))
+    loader = torch.utils.data.DataLoader(dataset, batch_size=int(config["batch_size"]), shuffle=False)
+    embeddings, labels = extract_features(model, loader, device=device)  # computed once, global model
+
+    reference = build_reference_prototypes(records)
+    rows, snapshot_rejections, accepted_snapshots = [], [], 0
+    for client_id in sorted(records):
+        snapshots, rejected = discover_client_snapshots(phase4_dir, client_id)
+        accepted_snapshots += len(snapshots)
+        snapshot_rejections.extend(rejected)
+        rows.extend(assess_client(client_id, records[client_id], reference, embeddings, labels,
+                                  snapshots, round_id))
+
+    reason_counts = {}
+    for _, reason in snapshot_rejections:
+        reason_counts[reason] = reason_counts.get(reason, 0) + 1
+    sample_counts = [r["sample_count"] for r in rows]
+    document = {
+        "schema_version": SCHEMA_VERSION,
+        "formula_version": FORMULA_VERSION,
+        "phase": 5,
+        "mode": mode,
+        "status": "COMPLETE" if rows and all(r["complete"] for r in rows) else "PARTIAL_EVIDENCE_MISSING",
+        "formulas": FORMULAS,
+        "config": {
+            "seed": int(config["seed"]),
+            "embedding_dim": int(config["embedding_dim"]),
+            "num_classes": int(config["num_classes"]),
+            "phase4_label_policy": next(iter(records.values()))["label_policy"],
+            "phase4_mode": phase4_mode,
+            "validation_samples_used": int(labels.numel()),
+            "validation_split_size_expected": EXPECTED_VALIDATION_SAMPLES,
+            "validation_scope": "shared global validation split (no client-specific validation "
+                                "data exists); scores describe each client's PROTOTYPES in the "
+                                "global model's embedding space, not a client-trained model",
+            "reference_definition": "unweighted self-inclusive mean over clients holding the class",
+        },
+        "provenance": {
+            "phase3_model_sha256": source["provenance"]["source_model_sha256"],
+            "phase3_round": round_id,
+            "phase3_checkpoint_crosscheck": source["provenance"]["checkpoint_crosscheck"],
+            "phase4_partition_sha256": first_provenance["partition_sha256"],
+            "phase4_summary_sha256": summary_hash,
+            "phase4_prototype_file_sha256": file_hashes,
+            "test_set_accessed": False,
+        },
+        "evidence": {
+            "training_history": inspect_training_history(history, int(config["num_clients"])),
+            "client_snapshot_files_accepted": accepted_snapshots,
+            "client_snapshot_files_rejected": len(snapshot_rejections),
+            "client_snapshot_rejection_reasons": reason_counts,
+            "stability_conclusion": (
+                "available for clients with >= 2 attested snapshots" if accepted_snapshots
+                else "unavailable: no attested client-local prototype snapshots exist; global-model "
+                     "checkpoints are not client history"),
+        },
+        "reference_prototypes": {
+            str(c): {"num_contributors": len(r["contributors"]), "contributors": r["contributors"]}
+            for c, r in reference.items()
+        },
+        "prototype_sample_count_summary": {
+            "min": min(sample_counts), "max": max(sample_counts),
+            "records_below_5_samples": sum(n < 5 for n in sample_counts),
+        },
+        "summary": summarize(rows),
+        "phase6_readiness": phase6_readiness(rows),
+        "numerical_validation": {"all_values_finite_and_in_unit_interval": True,
+                                 "schema_validated": True},
+        "records": rows,
+    }
+    output_dir = Path(output_dir)
+    write_json_atomic(document, output_dir / "pram.json", overwrite=overwrite)
+    return document
+
+
+def print_report(document):
+    line = "=" * 60
+    summary, ready = document["summary"], document["phase6_readiness"]
+    print(line)
+    print("PRAA-FL - PHASE 5: PROTOTYPE RELIABILITY ASSESSMENT (PRAM)")
+    print(line)
+    print(f"Mode: {document['mode']}  Phase 4 mode: {document['config']['phase4_mode']}  "
+          f"Label policy: {document['config']['phase4_label_policy']}")
+    print(f"Source: Phase 3 round {document['provenance']['phase3_round']}  "
+          f"sha256 {document['provenance']['phase3_model_sha256'][:12]}...")
+    print(f"Validation samples used: {document['config']['validation_samples_used']}")
+    print(f"Records (client, class): {summary['records']}   complete: {summary['complete_records']}")
+    for name in COMPONENTS:
+        print(f"  {name:12s} {summary['status_counts'][name]}")
+    print(f"Stability evidence: {document['evidence']['stability_conclusion']}")
+    print(f"PRS computable for all records: {ready['prs_computable_for_all_records']}")
+    print("Test set accessed: False")
+    print(line)
+    print(f"PHASE 5 STATUS: {document['status']}")
+    print(line)
+
+
+def main(args=None):
+    parser = argparse.ArgumentParser(description="Compute Phase 5 PRAM components")
+    parser.add_argument("--phase3-dir", type=Path, default=PHASE3_PATH)
+    parser.add_argument("--phase4-dir", type=Path, default=PHASE4_PATH)
+    parser.add_argument("--output-dir", type=Path, default=None)
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument("--smoke", action="store_true",
+                       help=f"use {SMOKE_VALIDATION_SAMPLES} validation samples; separate output")
+    modes.add_argument("--exploratory", action="store_true",
+                       help="full validation with global-model Phase 4 prototypes; not a final result")
+    parser.add_argument("--overwrite", action="store_true")
+    options = parser.parse_args(args)
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    torch_load_calls = 0
-    artifact_load_started = time.perf_counter()
-    checkpoint = torch.load(PHASE3 / "final_model.pt", map_location=device, weights_only=False)
-    torch_load_calls += 1
-    model = FLAMEModel(
-        embedding_dim=config["embedding_dim"], num_classes=config["num_classes"]
-    ).to(device)
-    validation_dataset = preprocess.val_dataset
-    if max_validation_samples is not None:
-        validation_dataset = torch.utils.data.Subset(
-            validation_dataset,
-            range(min(max_validation_samples, len(validation_dataset))),
-        )
-    validation_loader = DataLoader(
-        validation_dataset, batch_size=config["batch_size"], shuffle=False
+    # Construct ONLY the validation split; do not instantiate train or test datasets.
+    from medmnist import PathMNIST
+    from torchvision import transforms
+    validation_transform = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
+    ])
+    validation_dataset = PathMNIST(split="val", transform=validation_transform, download=True)
+    if len(validation_dataset) != EXPECTED_VALIDATION_SAMPLES:
+        raise ValueError(f"Expected {EXPECTED_VALIDATION_SAMPLES} validation samples, "
+                         f"found {len(validation_dataset)}")
+    output_dir = options.output_dir or (SMOKE_OUTPUT_PATH if options.smoke else OUTPUT_PATH)
+    document = run_pram(
+        options.phase3_dir, options.phase4_dir, output_dir, validation_dataset,
+        mode=("smoke" if options.smoke else "exploratory" if options.exploratory else "final"),
+        device=device, overwrite=options.overwrite,
+        max_validation_samples=SMOKE_VALIDATION_SAMPLES if options.smoke else None,
     )
-    validation_batches = len(validation_loader)
-
-    prototype_dir = PHASE4 / "prototypes"
-    temporal_root = PHASE4 / "snapshots"
-    prototype_paths = list(prototype_dir.glob("client_*.pt"))
-    ordered_prototype_paths = sorted(
-        prototype_paths, key=lambda item: int(item.stem.split("_")[1])
-    )
-    artifacts = {}
-    for path in prototype_paths:
-        artifact = torch.load(path, map_location="cpu", weights_only=True)
-        torch_load_calls += 1
-        artifacts[int(artifact["client_id"])] = artifact
-
-    reference_values = {}
-    for path in prototype_paths:
-        artifact = artifacts[int(path.stem.split("_")[1])]
-        for class_id, prototype in artifact["prototypes"].items():
-            reference_values.setdefault(int(class_id), []).append(prototype)
-    reference = {
-        class_id: torch.stack(values).mean(dim=0)
-        for class_id, values in reference_values.items()
-    }
-
-    temporal_by_client = {}
-    snapshot_count = 0
-    if temporal_root.exists():
-        for round_dir in sorted(temporal_root.glob("round_*")):
-            round_number = int(round_dir.name.split("_")[1])
-            for snapshot_path in round_dir.glob("client_*.pt"):
-                snapshot = torch.load(snapshot_path, map_location="cpu", weights_only=True)
-                torch_load_calls += 1
-                snapshot_count += 1
-                temporal_by_client.setdefault(int(snapshot["client_id"]), []).append(
-                    (round_number, snapshot["prototypes"])
-                )
-    artifact_load_seconds = time.perf_counter() - artifact_load_started
-    print(
-        "PHASE 5 diagnostics: "
-        f"validation_batches={validation_batches}, "
-        f"total_clients={len(ordered_prototype_paths)}, "
-        f"snapshot_files={snapshot_count}, "
-        f"prototype_artifacts={len(ordered_prototype_paths)}"
-    )
-    metric_started = time.perf_counter()
-    records = []
-    local_count = 0
-    fallback_count = 0
-    cached_fallback_embeddings = None
-    local_validation_times = []
-    fallback_validation_times = []
-    state_load_times = []
-    consistency_times = []
-    stability_times = []
-    prs_times = []
-    for index, path in enumerate(ordered_prototype_paths, start=1):
-        client_started = time.perf_counter()
-        artifact = artifacts[int(path.stem.split("_")[1])]
-        client_id = int(artifact["client_id"])
-        prototypes = {int(class_id): value for class_id, value in artifact["prototypes"].items()}
-        state_t0 = time.perf_counter()
-        state, fallback = load_client_state(client_id, checkpoint, True)
-        state_load_times.append(time.perf_counter() - state_t0)
-        if not fallback:
-            torch_load_calls += 1
-        local_count += not fallback
-        fallback_count += fallback
-        model_t0 = time.perf_counter()
-        model.load_state_dict(state)
-        model_load_time = time.perf_counter() - model_t0
-        classes = sorted(prototypes)
-        validation_t0 = time.perf_counter()
-        if fallback:
-            if cached_fallback_embeddings is None:
-                cached_fallback_embeddings = validation_embeddings(
-                    model, validation_loader, device=device
-                )
-            validation = validation_scores_from_embeddings(
-                *cached_fallback_embeddings,
-                classes,
-                prototypes,
-                device=device,
-            )
-            fallback_validation_times.append(time.perf_counter() - validation_t0)
-        else:
-            validation = validation_scores(
-                model, validation_loader, classes, prototypes, device=device
-            )
-            local_validation_times.append(time.perf_counter() - validation_t0)
-        consistency_t0 = time.perf_counter()
-        consistency = consistency_scores(prototypes, reference)
-        consistency_times.append(time.perf_counter() - consistency_t0)
-        client_snapshots = temporal_by_client.get(client_id, [])
-        client_snapshots.sort(key=lambda item: item[0])
-        stability_t0 = time.perf_counter()
-        stability = stability_scores(
-            [snapshot for _, snapshot in client_snapshots],
-            classes,
-        )
-        stability_times.append(time.perf_counter() - stability_t0)
-        prs_t0 = time.perf_counter()
-        prs = compute_prs(validation, stability, consistency)
-        prs_times.append(time.perf_counter() - prs_t0)
-        print(
-            f"Client {index}/{len(ordered_prototype_paths)} "
-            f"client_id={client_id} state_source={'GLOBAL_FALLBACK' if fallback else 'LOCAL'} "
-            f"load={state_load_times[-1]:.3f}s model={model_load_time:.3f}s "
-            f"validation={validation_t0 and (time.perf_counter()-validation_t0):.3f}s "
-            f"consistency={consistency_times[-1]:.3f}s stability={stability_times[-1]:.3f}s prs={prs_times[-1]:.3f}s"
-        )
-        for class_id in classes:
-            state_source = "GLOBAL_FALLBACK" if fallback else "LOCAL"
-            if fallback:
-                incomplete_reason = "missing_local_state"
-            elif stability is None:
-                incomplete_reason = "missing_temporal_snapshot"
-            elif validation[class_id] is None:
-                incomplete_reason = "missing_validation_information"
-            elif prs[class_id] is None:
-                incomplete_reason = "missing_reliability_component"
-            else:
-                incomplete_reason = None
-            records.append({
-                "client_id": client_id,
-                "class_id": class_id,
-                "state_source": state_source,
-                "validation_score": validation[class_id],
-                "prototype_stability": None,
-                "prototype_consistency": consistency[class_id],
-                "prs": prs[class_id],
-                "prototype_dimension": int(artifact["metadata"][class_id]["embedding_dimension"]),
-                "sample_count": int(artifact["metadata"][class_id]["sample_count"]),
-                "stability_status": "unavailable_without_multiple_snapshots",
-                "incomplete_reason": incomplete_reason,
-            })
-            if stability is not None:
-                records[-1]["prototype_stability"] = stability[class_id]
-                records[-1]["stability_status"] = "temporal_cosine_similarity"
-                records[-1]["rounds"] = [round_number for round_number, _ in client_snapshots]
-                records[-1]["prs"] = prs[class_id]
-
-    metric_seconds = time.perf_counter() - metric_started
-    OUTPUT.mkdir(parents=True, exist_ok=True)
-    total_clients = int(phase4_summary["num_clients"])
-    complete_records = sum(record["prs"] is not None for record in records)
-    incomplete_records = len(records) - complete_records
-    if fallback_count:
-        status = "INCOMPLETE_CLIENT_COVERAGE"
-    elif incomplete_records:
-        status = "INCOMPLETE_RECORDS"
-    else:
-        status = "COMPLETE"
-    result = {
-        "phase": 5,
-        "status": status,
-        "total_partition_clients": total_clients,
-        "participating_clients": int(local_count),
-        "non_participating_clients": int(total_clients - local_count),
-        "clients_evaluated": len({record["client_id"] for record in records}),
-        "records": records,
-        "complete_records": complete_records,
-        "incomplete_records": incomplete_records,
-        "incomplete_reason_counts": {
-            reason: sum(record["incomplete_reason"] == reason for record in records)
-            for reason in sorted({
-                record["incomplete_reason"]
-                for record in records
-                if record["incomplete_reason"] is not None
-            })
-        },
-        "clients_with_local_states": int(local_count),
-        "clients_using_global_fallback": int(fallback_count),
-        "persisted_local_state_clients": sorted(
-            client_id for client_id, snapshots in temporal_by_client.items()
-            if snapshots
-        ),
-        "validation_data": "PathMNIST validation split only",
-        "test_set_accessed": False,
-        "stability_snapshots_available": any(
-            len(snapshots) >= 2 for snapshots in temporal_by_client.values()
-        ),
-        "temporal_rounds": sorted({
-            round_number
-            for snapshots in temporal_by_client.values()
-            for round_number, _ in snapshots
-        }),
-        "prs_formula": "weighted mean of validation, stability, and consistency; weights configurable",
-        "prs_weights": {
-            "validation": PRSConfig().validation_weight,
-            "stability": PRSConfig().stability_weight,
-            "consistency": PRSConfig().consistency_weight,
-        },
-    }
-    output_started = time.perf_counter()
-    (OUTPUT / "prs.json").write_text(json.dumps(result, indent=2))
-    output_seconds = time.perf_counter() - output_started
-    initialization_seconds = time.perf_counter() - initialization_started - artifact_load_seconds - metric_seconds - output_seconds
-    print("=" * 56)
-    print("PHASE 5 — PRAM / PRS SANITY CHECK")
-    print("=" * 56)
-    print(f"Clients evaluated: {result['clients_evaluated']}")
-    print(f"Records: {len(records)}")
-    print(f"Local states: {local_count}")
-    print(f"Global fallbacks: {fallback_count}")
-    finite_stability = [
-        record["prototype_stability"]
-        for record in records
-        if record["prototype_stability"] is not None
-    ]
-    print(
-        "Prototype stability: "
-        + ("FINITE" if finite_stability else "UNAVAILABLE")
-    )
-    print(f"Complete PRS records: {result['complete_records']}")
-    print(f"Incomplete PRS records: {result['incomplete_records']}")
-    print(f"Incomplete reasons: {result['incomplete_reason_counts']}")
-    print("Test set accessed: False")
-    print(f"PHASE 5 STATUS: {result['status']}")
-    print(
-        "Diagnostics: "
-        f"clients={len(artifacts)}, snapshots={snapshot_count}, "
-        f"prototype_files={len(prototype_paths)}, records={len(records)}, "
-        f"torch_load_calls={torch_load_calls}"
-    )
-    print(
-        "Timing (seconds): "
-        f"initialization={initialization_seconds:.2f}, "
-        f"artifact_loading={artifact_load_seconds:.2f}, "
-        f"metrics={metric_seconds:.2f}, output={output_seconds:.2f}"
-    )
+    print_report(document)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--max-validation-samples", type=int)
-    args = parser.parse_args()
-    main(args.max_validation_samples)
+    main()

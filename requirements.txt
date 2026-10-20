@@ -1,13 +1,13 @@
+# Core runtime (Phases 1-8). Tested with Python 3.13, torch 2.14, torchvision 0.29,
+# medmnist 3.0.2, numpy 2.5, scikit-learn 1.9, matplotlib 3.11, pytest 9.1.
+# Colab ships torch/torchvision/numpy/scikit-learn/matplotlib; only medmnist and pytest are extra.
 torch>=2.2.0
 torchvision
-flwr
-medmnist
+medmnist>=3.0.0
 numpy
-pandas
 scikit-learn
 matplotlib
-opencv-python
 tqdm
 Pillow
-jupyter
-ipykernel
+pytest
+# Not imported by any code in this repository (kept out on purpose): flwr, pandas, opencv-python, jupyter.

@@ -1,0 +1,2708 @@
+{
+  "schema_version": "praa-fl.phase6.prs/1",
+  "phase": 6,
+  "status": "PARTIAL_EVIDENCE",
+  "policy": "renormalize",
+  "extension_notice": "renormalized PRS is an EXTENSION of the documented formula; exploratory only",
+  "formula": "PRS = (w_v*V + w_s*S + w_c*C)/(w_v+w_s+w_c); strict: all three components valid",
+  "config": {
+    "prs": {
+      "validation_weight": 0.3333333333333333,
+      "stability_weight": 0.3333333333333333,
+      "consistency_weight": 0.3333333333333333,
+      "epsilon": 1e-08
+    },
+    "tau": 1.0,
+    "weight_floor": 0.05,
+    "weight_cap": 5.0,
+    "min_assessed": 2,
+    "client_reduce": "sample_weighted",
+    "missing_component_policy": "renormalize",
+    "stability_window": 3,
+    "apply_to_model": true,
+    "apply_to_prototypes": true
+  },
+  "source": {
+    "pram_mode": "exploratory",
+    "pram_status": "PARTIAL_EVIDENCE_MISSING",
+    "pram_formula_version": "pram/1",
+    "pram_sha256": "ee72229d4300dd9d940d1333226b5d02ce3890b0ed69242fc1c4a3612f4c8d1b",
+    "test_set_accessed": false
+  },
+  "summary": {
+    "records": 126,
+    "records_with_prs": 115,
+    "clients": 50,
+    "clients_assessed": 39,
+    "multiplier_info": {
+      "num_assessed": 39,
+      "num_total": 50,
+      "applied": true,
+      "reason": null
+    }
+  },
+  "clients": {
+    "0": {
+      "reliability": 0.5940419046832445,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 12,
+      "multiplier": 0.7359639570398622,
+      "flame_weight": 0.01362088535754824,
+      "praa_weight": 0.009906974867484503
+    },
+    "1": {
+      "reliability": 0.7921337544269087,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 24,
+      "multiplier": 0.9813817641766002,
+      "flame_weight": 0.02724177071509648,
+      "praa_weight": 0.026421197342898082
+    },
+    "2": {
+      "reliability": 0.8156485523296038,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 28,
+      "multiplier": 1.0105144626899956,
+      "flame_weight": 0.03178206583427923,
+      "praa_weight": 0.03173977431248041
+    },
+    "3": {
+      "reliability": 0.8888037861453741,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 67,
+      "multiplier": 1.101147151954466,
+      "flame_weight": 0.07604994324631101,
+      "praa_weight": 0.08276056215300263
+    },
+    "4": {
+      "reliability": 0.9807617496245368,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 4,
+      "multiplier": 1.2150747152288766,
+      "flame_weight": 0.004540295119182747,
+      "praa_weight": 0.005452130524754475
+    },
+    "5": {
+      "reliability": 0.820628321738272,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 8,
+      "multiplier": 1.0166839446242772,
+      "flame_weight": 0.009080590238365494,
+      "praa_weight": 0.009123872794060553
+    },
+    "6": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 3,
+      "multiplier": 1.0,
+      "flame_weight": 0.00340522133938706,
+      "praa_weight": 0.0033653057234390863
+    },
+    "7": {
+      "reliability": 0.7065735061440689,
+      "status": "assessed",
+      "num_records": 4,
+      "num_scored": 4,
+      "reason": null,
+      "samples": 13,
+      "multiplier": 0.8753803888609506,
+      "flame_weight": 0.014755959137343927,
+      "praa_weight": 0.01276566474222039
+    },
+    "8": {
+      "reliability": 0.8251803209003777,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 9,
+      "multiplier": 1.0223234580817862,
+      "flame_weight": 0.01021566401816118,
+      "praa_weight": 0.010321292954066022
+    },
+    "9": {
+      "reliability": 0.9887105651429718,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 39,
+      "multiplier": 1.2249225755845305,
+      "flame_weight": 0.04426787741203178,
+      "praa_weight": 0.05358910640699678
+    },
+    "10": {
+      "reliability": 0.8568990211777456,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 11,
+      "multiplier": 1.061620046393583,
+      "flame_weight": 0.012485811577752554,
+      "praa_weight": 0.013099812066901976
+    },
+    "11": {
+      "reliability": 0.7302325562231732,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 34,
+      "multiplier": 0.904691802717026,
+      "flame_weight": 0.03859250851305335,
+      "praa_weight": 0.034505064351829706
+    },
+    "12": {
+      "reliability": 0.7290886748092102,
+      "status": "assessed",
+      "num_records": 4,
+      "num_scored": 4,
+      "reason": null,
+      "samples": 16,
+      "multiplier": 0.9032746375554985,
+      "flame_weight": 0.018161180476730987,
+      "praa_weight": 0.016212241640548724
+    },
+    "13": {
+      "reliability": 0.8232203152372846,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 16,
+      "multiplier": 1.019895189112445,
+      "flame_weight": 0.018161180476730987,
+      "praa_weight": 0.01830538195854987
+    },
+    "14": {
+      "reliability": 0.9268570681740473,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 2,
+      "multiplier": 1.1482917116216995,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.002576235112865447
+    },
+    "15": {
+      "reliability": 0.8142963288633833,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 5,
+      "multiplier": 1.0088391806515467,
+      "flame_weight": 0.0056753688989784334,
+      "praa_weight": 0.005658420447793747
+    },
+    "16": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 3,
+      "multiplier": 1.0,
+      "flame_weight": 0.00340522133938706,
+      "praa_weight": 0.0033653057234390863
+    },
+    "17": {
+      "reliability": 0.8331791413770234,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 22,
+      "multiplier": 1.0322332700382046,
+      "flame_weight": 0.024971623155505107,
+      "praa_weight": 0.02547439056494797
+    },
+    "18": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 15,
+      "multiplier": 1.0,
+      "flame_weight": 0.0170261066969353,
+      "praa_weight": 0.016826528617195434
+    },
+    "19": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 2,
+      "multiplier": 1.0,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.002243537148959391
+    },
+    "20": {
+      "reliability": 0.7562878961492633,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 30,
+      "multiplier": 0.9369720020141596,
+      "flame_weight": 0.0340522133938706,
+      "praa_weight": 0.03153197241080431
+    },
+    "21": {
+      "reliability": 0.8581481227551265,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 30,
+      "multiplier": 1.0631675697793685,
+      "flame_weight": 0.0340522133938706,
+      "praa_weight": 0.03577883907553333
+    },
+    "22": {
+      "reliability": 0.8221219280236095,
+      "status": "assessed",
+      "num_records": 4,
+      "num_scored": 4,
+      "reason": null,
+      "samples": 19,
+      "multiplier": 1.0185343871323738,
+      "flame_weight": 0.021566401816118047,
+      "praa_weight": 0.02170863748272863
+    },
+    "23": {
+      "reliability": 0.7345554617641827,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 5,
+      "multiplier": 0.9100474899888985,
+      "flame_weight": 0.0056753688989784334,
+      "praa_weight": 0.005104313377768358
+    },
+    "24": {
+      "reliability": 0.9743652007571484,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 11,
+      "multiplier": 1.2071499722457157,
+      "flame_weight": 0.012485811577752554,
+      "praa_weight": 0.014895571939042087
+    },
+    "25": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 48,
+      "multiplier": 1.0,
+      "flame_weight": 0.05448354143019296,
+      "praa_weight": 0.05384489157502538
+    },
+    "26": {
+      "reliability": 0.7569655109174419,
+      "status": "assessed",
+      "num_records": 4,
+      "num_scored": 4,
+      "reason": null,
+      "samples": 21,
+      "multiplier": 0.9378115051572978,
+      "flame_weight": 0.02383654937570942,
+      "praa_weight": 0.02209215698069015
+    },
+    "27": {
+      "reliability": 0.8345836508134731,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 19,
+      "multiplier": 1.0339733296441016,
+      "flame_weight": 0.021566401816118047,
+      "praa_weight": 0.022037696972852874
+    },
+    "28": {
+      "reliability": 0.8135557560173113,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 24,
+      "multiplier": 1.0079216781690206,
+      "flame_weight": 0.02724177071509648,
+      "praa_weight": 0.02713571673856427
+    },
+    "29": {
+      "reliability": 0.8947845794822693,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 31,
+      "multiplier": 1.1085568116026452,
+      "flame_weight": 0.03518728717366629,
+      "praa_weight": 0.038549870022718924
+    },
+    "30": {
+      "reliability": 0.8283004300959496,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 2,
+      "multiplier": 1.0261889899438759,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.0023022931207922004
+    },
+    "31": {
+      "reliability": 0.9489873353487845,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 9,
+      "multiplier": 1.1757091023341502,
+      "flame_weight": 0.01021566401816118,
+      "praa_weight": 0.011869861713553639
+    },
+    "32": {
+      "reliability": 0.8485845030990796,
+      "status": "assessed",
+      "num_records": 4,
+      "num_scored": 4,
+      "reason": null,
+      "samples": 29,
+      "multiplier": 1.0513191137862825,
+      "flame_weight": 0.032917139614074914,
+      "praa_weight": 0.034200765564263554
+    },
+    "33": {
+      "reliability": 0.7357883140310143,
+      "status": "assessed",
+      "num_records": 4,
+      "num_scored": 4,
+      "reason": null,
+      "samples": 20,
+      "multiplier": 0.9115748819550036,
+      "flame_weight": 0.022701475595913734,
+      "praa_weight": 0.02045152111724322
+    },
+    "34": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 5,
+      "multiplier": 1.0,
+      "flame_weight": 0.0056753688989784334,
+      "praa_weight": 0.005608842872398477
+    },
+    "35": {
+      "reliability": 0.7734888818087569,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 18,
+      "multiplier": 0.9582824607059535,
+      "flame_weight": 0.02043132803632236,
+      "praa_weight": 0.019349480698110218
+    },
+    "36": {
+      "reliability": 0.7349829788405196,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 10,
+      "multiplier": 0.9105771448107595,
+      "flame_weight": 0.011350737797956867,
+      "praa_weight": 0.010214568256881568
+    },
+    "37": {
+      "reliability": 0.6567809631607392,
+      "status": "assessed",
+      "num_records": 4,
+      "num_scored": 4,
+      "reason": null,
+      "samples": 7,
+      "multiplier": 0.8136919512672612,
+      "flame_weight": 0.007945516458569807,
+      "praa_weight": 0.006389418421670743
+    },
+    "38": {
+      "reliability": 0.7747305609603549,
+      "status": "assessed",
+      "num_records": 2,
+      "num_scored": 2,
+      "reason": null,
+      "samples": 3,
+      "multiplier": 0.9598207883804485,
+      "flame_weight": 0.00340522133938706,
+      "praa_weight": 0.0032300903926125394
+    },
+    "39": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 2,
+      "multiplier": 1.0,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.002243537148959391
+    },
+    "40": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 2,
+      "multiplier": 1.0,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.002243537148959391
+    },
+    "41": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 4,
+      "multiplier": 1.0,
+      "flame_weight": 0.004540295119182747,
+      "praa_weight": 0.004487074297918782
+    },
+    "42": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 2,
+      "multiplier": 1.0,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.002243537148959391
+    },
+    "43": {
+      "reliability": 0.6878657429750802,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 7,
+      "multiplier": 0.852203169710805,
+      "flame_weight": 0.007945516458569807,
+      "praa_weight": 0.006691823143974974
+    },
+    "44": {
+      "reliability": 0.8622431142295199,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 47,
+      "multiplier": 1.0682408922264544,
+      "flame_weight": 0.053348467650397274,
+      "praa_weight": 0.05632099595506802
+    },
+    "45": {
+      "reliability": 0.7803985032881159,
+      "status": "assessed",
+      "num_records": 5,
+      "num_scored": 5,
+      "reason": null,
+      "samples": 28,
+      "multiplier": 0.9668428540477468,
+      "flame_weight": 0.03178206583427923,
+      "praa_weight": 0.030368070043668597
+    },
+    "46": {
+      "reliability": 0.7633236182445047,
+      "status": "assessed",
+      "num_records": 4,
+      "num_scored": 4,
+      "reason": null,
+      "samples": 31,
+      "multiplier": 0.945688622564031,
+      "flame_weight": 0.03518728717366629,
+      "praa_weight": 0.032886157119094914
+    },
+    "47": {
+      "reliability": 0.8007593299406095,
+      "status": "assessed",
+      "num_records": 6,
+      "num_scored": 6,
+      "reason": null,
+      "samples": 74,
+      "multiplier": 0.992068068689401,
+      "flame_weight": 0.08399545970488081,
+      "praa_weight": 0.08235243795683952
+    },
+    "48": {
+      "reliability": 0.711447607367707,
+      "status": "assessed",
+      "num_records": 3,
+      "num_scored": 3,
+      "reason": null,
+      "samples": 8,
+      "multiplier": 0.8814189575128949,
+      "flame_weight": 0.009080590238365494,
+      "praa_weight": 0.007909984699908956
+    },
+    "49": {
+      "reliability": null,
+      "status": "unassessed",
+      "num_records": 1,
+      "num_scored": 0,
+      "reason": "no_record_with_a_valid_prs",
+      "samples": 2,
+      "multiplier": 1.0,
+      "flame_weight": 0.0022701475595913734,
+      "praa_weight": 0.002243537148959391
+    }
+  },
+  "records": [
+    {
+      "client_id": 0,
+      "class_id": 2,
+      "sample_count": 11,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.5579520894421471,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 0,
+      "class_id": 7,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9910298723353151,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 1,
+      "class_id": 2,
+      "sample_count": 8,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.5211538838015662,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 1,
+      "class_id": 5,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.5103772459565449,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 1,
+      "class_id": 8,
+      "sample_count": 15,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9554401193251157,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 2,
+      "class_id": 3,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7672157784646769,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 2,
+      "class_id": 4,
+      "sample_count": 18,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8329851348748367,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 2,
+      "class_id": 8,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9394850312997508,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 3,
+      "class_id": 7,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7759424073844435,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 3,
+      "class_id": 8,
+      "sample_count": 66,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8905138070356913,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 4,
+      "class_id": 0,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9840607171615194,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 4,
+      "class_id": 6,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9708648470135888,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 5,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6462771991888682,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 5,
+      "class_id": 8,
+      "sample_count": 7,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8455356249596154,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 6,
+      "class_id": 2,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 7,
+      "class_id": 1,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6550760131008578,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 7,
+      "class_id": 2,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.5761446025636462,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 7,
+      "class_id": 5,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.624049272107585,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 7,
+      "class_id": 8,
+      "sample_count": 6,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8164618669608452,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 8,
+      "class_id": 1,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7383018319857154,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 8,
+      "class_id": 8,
+      "sample_count": 6,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8686195653577089,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 9,
+      "class_id": 0,
+      "sample_count": 20,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9893800699287143,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 9,
+      "class_id": 8,
+      "sample_count": 19,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9880058232632429,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 10,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7805820107460022,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 10,
+      "class_id": 6,
+      "sample_count": 10,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.86453072222092,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 11,
+      "class_id": 0,
+      "sample_count": 10,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9263884839990983,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 11,
+      "class_id": 1,
+      "sample_count": 21,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6058902275821683,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 11,
+      "class_id": 3,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9467757641237913,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 12,
+      "class_id": 1,
+      "sample_count": 8,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.728594644208392,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 12,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6594179272651672,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 12,
+      "class_id": 3,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8370147005084476,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 12,
+      "class_id": 5,
+      "sample_count": 5,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.700642862999633,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 13,
+      "class_id": 3,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.858975836871817,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 13,
+      "class_id": 4,
+      "sample_count": 10,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8072209375627926,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 13,
+      "class_id": 7,
+      "sample_count": 4,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8453409986062483,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 14,
+      "class_id": 0,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8938308128018888,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 14,
+      "class_id": 4,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.959883323546206,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 15,
+      "class_id": 1,
+      "sample_count": 4,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8008359836426792,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 15,
+      "class_id": 4,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8681377097462,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 16,
+      "class_id": 5,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 17,
+      "class_id": 1,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7024725416750984,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 17,
+      "class_id": 4,
+      "sample_count": 8,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8905483462837305,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 17,
+      "class_id": 6,
+      "sample_count": 13,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8079293691038134,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 18,
+      "class_id": 2,
+      "sample_count": 15,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 19,
+      "class_id": 2,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 20,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6029672092861599,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 20,
+      "class_id": 4,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8184732126385977,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 20,
+      "class_id": 7,
+      "sample_count": 27,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7573601203672053,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 21,
+      "class_id": 0,
+      "sample_count": 14,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9460159691907715,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 21,
+      "class_id": 4,
+      "sample_count": 15,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7740439949410686,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 21,
+      "class_id": 6,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8895601898669652,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 22,
+      "class_id": 2,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6228814522425334,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 22,
+      "class_id": 3,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8842299454764924,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 22,
+      "class_id": 4,
+      "sample_count": 7,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8331098873963515,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 22,
+      "class_id": 6,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.5847150069006221,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 23,
+      "class_id": 2,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6027163498931462,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 23,
+      "class_id": 3,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8809084524126614,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 23,
+      "class_id": 7,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7932180783109801,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 24,
+      "class_id": 0,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9857212790036637,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 24,
+      "class_id": 3,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9342818731461427,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 24,
+      "class_id": 5,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9122438241495163,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 25,
+      "class_id": 7,
+      "sample_count": 48,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 26,
+      "class_id": 1,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7566116412743827,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 26,
+      "class_id": 3,
+      "sample_count": 13,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6984869732576258,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 26,
+      "class_id": 6,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6736659370914968,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 26,
+      "class_id": 8,
+      "sample_count": 6,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8976112497585444,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 27,
+      "class_id": 2,
+      "sample_count": 10,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8722139067120022,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 27,
+      "class_id": 6,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.792772255370663,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 28,
+      "class_id": 1,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7170282106074727,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 28,
+      "class_id": 2,
+      "sample_count": 13,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8776503768232132,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 28,
+      "class_id": 3,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8313146751232213,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 29,
+      "class_id": 3,
+      "sample_count": 30,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8925526639169475,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 29,
+      "class_id": 4,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9617420464419245,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 30,
+      "class_id": 3,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7221011528713068,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 30,
+      "class_id": 5,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9344997073205923,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 31,
+      "class_id": 0,
+      "sample_count": 8,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9436226278457587,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 31,
+      "class_id": 7,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9919049953729913,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 32,
+      "class_id": 0,
+      "sample_count": 4,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9471335957877116,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 32,
+      "class_id": 3,
+      "sample_count": 15,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9276833486804499,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 32,
+      "class_id": 4,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7783694813760479,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 32,
+      "class_id": 6,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6807551661266297,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 33,
+      "class_id": 1,
+      "sample_count": 14,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7113959493226564,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 33,
+      "class_id": 3,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7757376956279716,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 33,
+      "class_id": 4,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8669986468352628,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 33,
+      "class_id": 7,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6897446769846683,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 34,
+      "class_id": 5,
+      "sample_count": 5,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 35,
+      "class_id": 1,
+      "sample_count": 4,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8223329887935995,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 35,
+      "class_id": 6,
+      "sample_count": 11,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7616788987898635,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 35,
+      "class_id": 8,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7516666768982424,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 36,
+      "class_id": 1,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7119901606014797,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 36,
+      "class_id": 7,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9419183429918789,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 37,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.67095990313424,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 37,
+      "class_id": 5,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6326122898911091,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 37,
+      "class_id": 6,
+      "sample_count": 4,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6681006708126112,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 37,
+      "class_id": 7,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6214918658493809,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 38,
+      "class_id": 1,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7274056507544124,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 38,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8693803813722398,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 39,
+      "class_id": 7,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 40,
+      "class_id": 6,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 41,
+      "class_id": 0,
+      "sample_count": 4,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 42,
+      "class_id": 7,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    },
+    {
+      "client_id": 43,
+      "class_id": 2,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.5673545466528999,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 43,
+      "class_id": 5,
+      "sample_count": 5,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6828791420780221,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 43,
+      "class_id": 8,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8333099437825507,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 44,
+      "class_id": 1,
+      "sample_count": 6,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7847742445647096,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 44,
+      "class_id": 5,
+      "sample_count": 40,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8760288056189762,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 44,
+      "class_id": 6,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.775628676640131,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 45,
+      "class_id": 0,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9181499279083595,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 45,
+      "class_id": 2,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6370424959394667,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 45,
+      "class_id": 3,
+      "sample_count": 3,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7783624748457673,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 45,
+      "class_id": 4,
+      "sample_count": 9,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7875255614853978,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 45,
+      "class_id": 5,
+      "sample_count": 10,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7762763342617885,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 46,
+      "class_id": 1,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6011154387170905,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 46,
+      "class_id": 2,
+      "sample_count": 16,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8114766743448045,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 46,
+      "class_id": 3,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8469720458076899,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 46,
+      "class_id": 6,
+      "sample_count": 12,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.6986954871441918,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 47,
+      "class_id": 0,
+      "sample_count": 17,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.9445981736027428,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 47,
+      "class_id": 1,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.49912349554087154,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 47,
+      "class_id": 2,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.5754396716753643,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 47,
+      "class_id": 3,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7205083151589629,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 47,
+      "class_id": 4,
+      "sample_count": 10,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8149646914407108,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 47,
+      "class_id": 5,
+      "sample_count": 43,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.759950311532577,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 48,
+      "class_id": 1,
+      "sample_count": 6,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.7178788564345018,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 48,
+      "class_id": 7,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.8749867286693537,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 48,
+      "class_id": 8,
+      "sample_count": 1,
+      "component_status": {
+        "validation": "valid",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": 0.5093209916652914,
+      "prs_status": "partial",
+      "used_components": [
+        "validation",
+        "consistency"
+      ],
+      "reason": "renormalized_over_valid_components"
+    },
+    {
+      "client_id": 49,
+      "class_id": 4,
+      "sample_count": 2,
+      "component_status": {
+        "validation": "degenerate",
+        "consistency": "valid",
+        "stability": "unavailable"
+      },
+      "prs": null,
+      "prs_status": "unavailable",
+      "used_components": [],
+      "reason": "components_not_valid:{'validation': 'single_candidate_class_recall_is_1_by_construction', 'stability': 'fewer_than_two_attested_client_snapshots'}"
+    }
+  ],
+  "note": null
+}
